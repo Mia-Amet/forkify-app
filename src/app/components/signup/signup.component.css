@@ -1,0 +1,19 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+.mat-card-container {
+  position: relative;
+  width: 600px;
+  opacity: 1 !important;
+  padding: 3% 5%;
+  z-index: 0;
+  background: #161719 url("../../../assets/patterns/spaceship-night.png") no-repeat -190px 10px;
+  background-size: 1000px auto; }
+
+.form-action {
+  display: inline-flex;
+  height: 40px;
+  align-items: center; }
+
+span {
+  color: #bec4c0 !important; }
+
+/*# sourceMappingURL=signup.component.css.map */

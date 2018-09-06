@@ -1,0 +1,81 @@
+{
+  "_from": "angularfire-lite@^5.2.0",
+  "_id": "angularfire-lite@5.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-Ac6pkzn2I3qHpVIrB2M+xLDpEpEVQU77M0cqzP9yO7Z1WjTRQEpk1gKlWpszik9YXqNAb38c0Axz9+CrsBSl/g==",
+  "_location": "/angularfire-lite",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "angularfire-lite@^5.2.0",
+    "name": "angularfire-lite",
+    "escapedName": "angularfire-lite",
+    "rawSpec": "^5.2.0",
+    "saveSpec": null,
+    "fetchSpec": "^5.2.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angularfire-lite/-/angularfire-lite-5.2.0.tgz",
+  "_shasum": "bd032ef2125d71c4e1cbdbd36dba30075db6c03a",
+  "_spec": "angularfire-lite@^5.2.0",
+  "_where": "/Users/dashahoshurenko/my_work/forkify/forkify-app",
+  "author": {
+    "name": "Hamed Baatour"
+  },
+  "bugs": {
+    "url": "https://github.com/hamedbaatour/angularfire-lite/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "tslib": "^1.7.1"
+  },
+  "deprecated": false,
+  "description": "Lightweight library to use Firebase API with Angular.",
+  "devDependencies": {
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/compiler-cli": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/http": "^5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "core-js": "^2.4.1",
+    "firebase": "^4.12.1",
+    "ng-packagr": "^2.4.2",
+    "rxjs": "^5.5.6",
+    "typescript": "~2.5.3",
+    "zone.js": "^0.8.19"
+  },
+  "es2015": "esm2015/angularfire-lite.js",
+  "homepage": "https://github.com/hamedbaatour/angularfire-lite#readme",
+  "license": "Apache-2.0",
+  "main": "bundles/angularfire-lite.umd.js",
+  "metadata": "angularfire-lite.metadata.json",
+  "module": "esm5/angularfire-lite.js",
+  "name": "angularfire-lite",
+  "peerDependencies": {
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/http": "^5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "core-js": "^2.4.1",
+    "firebase": "^4.12.1",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.19"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamedbaatour/angularfire-lite.git"
+  },
+  "typings": "angularfire-lite.d.ts",
+  "version": "5.2.0"
+}

@@ -1,0 +1,43 @@
+<div class="container mt-5 mb-5 d-flex flex-column align-items-center">
+  <mat-card class="mat-card-container mt-5">
+    <mat-card-content class="d-flex align-items-center justify-content-between">
+      <mat-card-title class="mb-0">SIGN UP</mat-card-title>
+      <mat-card-actions class="mt-0 f-btn-small">
+        <span class="mb-0">Already have an account?</span>
+        <a mat-button class="f-btn f-btn-link f-secondary-l m-0 pl-0 pr-0" routerLink="/login">
+          Login
+        </a>
+      </mat-card-actions>
+    </mat-card-content>
+    <mat-card-content class="mb-4">
+      <form [formGroup]="signupForm" class="d-flex justify-content-between flex-wrap" (ngSubmit)="onSignup()">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" name="email">
+          <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').dirty">
+            {{ validators.getErrorMsg(signupForm.get('email')) }}
+          </mat-error>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" type="password" formControlName="password" name="password">
+          <mat-error *ngIf="signupForm.get('password').invalid && signupForm.get('password').dirty">
+            {{ validators.getErrorMsg(signupForm.get('password')) }}
+          </mat-error>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword" name="confirmPassword">
+          <mat-error *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').dirty">
+            {{ validators.getErrorMsg(signupForm.get('confirmPassword')) }}
+          </mat-error>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <button mat-flat-button class="f-btn f-btn-flat f-primary full-width mt-2" type="submit">Sign Up</button>
+      </form>
+    </mat-card-content>
+    <div class="bg"></div>
+  </mat-card>
+</div>

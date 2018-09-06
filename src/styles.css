@@ -1,0 +1,64 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+* {
+  font-family: 'Raleway', 'Montserrat', sans-serif !important;
+  letter-spacing: 0.05em; }
+
+body {
+  background: #18181e; }
+
+.full-width {
+  width: 100%; }
+
+.half-width {
+  width: 48%; }
+
+mat-dialog-container.mat-dialog-container {
+  position: fixed !important;
+  bottom: 40px;
+  right: 40px;
+  width: 300px !important;
+  height: max-content !important;
+  padding: 0;
+  background-color: #E0EDEB !important; }
+
+.f-btn, f-btn:focus {
+  outline: none !important;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
+
+.f-btn-small {
+  font-size: 12px !important; }
+
+.f-btn-flat.f-primary, .f-btn-regular.f-primary {
+  background-color: #34cbbf !important;
+  color: #ffffff !important; }
+  .f-btn-flat.f-primary:hover, .f-btn-regular.f-primary:hover {
+    background-color: #2dafa4 !important; }
+
+.f-btn-flat.f-secondary-l, f-btn-regular.f-secondary-l {
+  background-color: #ec5358 !important;
+  color: #122022 !important; }
+  .f-btn-flat.f-secondary-l:hover, f-btn-regular.f-secondary-l:hover {
+    background-color: #ea4146 !important; }
+
+.f-btn-stroke.f-primary {
+  border-color: #34cbbf;
+  color: #34cbbf !important; }
+
+.f-btn-link.f-secondary-l {
+  color: #ec5358 !important; }
+  .f-btn-link.f-secondary-l:hover {
+    background-color: transparent !important; }
+
+.f-btn-link.f-primary-l {
+  color: #85e0d9 !important; }
+  .f-btn-link.f-primary-l:hover {
+    background-color: transparent !important; }
+
+.mat-input-element {
+  caret-color: #ec5358 !important; }
+
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #ec5358 !important; }
+
+/*# sourceMappingURL=styles.css.map */

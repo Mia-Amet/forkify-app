@@ -1,0 +1,39 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+mat-dialog-content.mat-dialog-content {
+  background: #e0edeb !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px !important;
+  margin: 0; }
+  mat-dialog-content.mat-dialog-content:hover {
+    cursor: pointer; }
+
+.close-btn {
+  position: absolute;
+  border: 0 !important;
+  outline: none !important;
+  top: 0;
+  right: 0;
+  background: transparent;
+  fill: #929795; }
+  .close-btn:hover {
+    cursor: pointer; }
+
+.icon-success {
+  fill: #5ae7bd; }
+
+.icon-error {
+  fill: #ec4c5b; }
+
+.dialog-title {
+  font-weight: 300;
+  font-size: 26px;
+  color: #0f0f13; }
+
+.dialog-text {
+  color: #0f0f13 !important;
+  font-size: 11px !important; }
+
+/*# sourceMappingURL=dialog.component.css.map */

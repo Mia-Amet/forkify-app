@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAQ,iEAAsD;ACE9D,MAAO;EACL,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,WAAW;EACvB,SAAS,EAAE,IAAI;EACf,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EACnB,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,KAAK;EACb,QAAE;IACA,KAAK,EAAE,OAAiC",
+"sources": ["../forkify-theme.scss","app.component.scss"],
+"names": [],
+"file": "app.component.css"
+}

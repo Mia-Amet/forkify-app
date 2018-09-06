@@ -1,0 +1,80 @@
+@import "forkify-theme.scss";
+
+* {
+  font-family: 'Raleway', 'Montserrat', sans-serif !important;
+  letter-spacing: 0.05em;
+}
+
+body {
+  background: lighten($forkify-surface, 4%);
+}
+.full-width {
+  width: 100%;
+}
+.half-width {
+  width: 48%;
+}
+
+mat-dialog-container.mat-dialog-container {
+  position: fixed !important;
+  bottom: 40px;
+  right: 40px;
+  width: 300px !important;
+  height: max-content !important;
+  padding: 0;
+  background-color: #E0EDEB !important;
+}
+
+.f-btn, f-btn:focus {
+  outline: none !important;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.f-btn-small {
+  font-size: 12px !important;
+}
+
+.f-btn-flat.f-primary, .f-btn-regular.f-primary {
+  background-color: $forkify-primary !important;
+  color: $forkify-on-primary !important;
+  &:hover {
+    background-color: darken($forkify-primary, 7%) !important;
+  }
+}
+.f-btn-flat.f-secondary-l, f-btn-regular.f-secondary-l {
+  background-color: $forkify-secondary-light !important;
+  color: $forkify-on-secondary !important;
+  &:hover {
+    background-color: darken($forkify-secondary-light, 4%) !important;
+  }
+}
+
+.f-btn-stroke.f-primary {
+  border-color: $forkify-primary;
+  color: $forkify-primary !important;
+}
+
+.f-btn-link.f-secondary-l {
+  color: $forkify-secondary-light !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.f-btn-link.f-primary-l {
+  color: lighten($forkify-primary, 20%) !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.mat-input-element {
+  caret-color: $forkify-secondary-light !important;
+}
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: $forkify-secondary-light !important;
+}
+
+
+
