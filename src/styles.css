@@ -1,10 +1,22 @@
 @import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
 * {
   font-family: 'Raleway', 'Montserrat', sans-serif !important;
-  letter-spacing: 0.05em; }
+  letter-spacing: 0.05em;
+  text-decoration: none !important; }
 
 body {
-  background: #18181e; }
+  background: #2a3540 radial-gradient(ellipse, rgba(52, 203, 191, 0.01), #222b34); }
 
 .full-width {
   width: 100%; }
@@ -20,6 +32,18 @@ mat-dialog-container.mat-dialog-container {
   height: max-content !important;
   padding: 0;
   background-color: #E0EDEB !important; }
+
+a.link {
+  color: #ec5358 !important;
+  margin: 0 20px;
+  transition: border .1s ease-in-out;
+  height: 100%;
+  padding-top: 18px; }
+  a.link:hover {
+    border-bottom: 4px solid #B42845;
+    cursor: pointer; }
+  a.link.active {
+    border-bottom: 4px solid #B42845; }
 
 .f-btn, f-btn:focus {
   outline: none !important;
@@ -44,14 +68,21 @@ mat-dialog-container.mat-dialog-container {
   border-color: #34cbbf;
   color: #34cbbf !important; }
 
-.f-btn-link.f-secondary-l {
-  color: #ec5358 !important; }
-  .f-btn-link.f-secondary-l:hover {
+.f-btn-link.f-grey {
+  color: #79888D !important;
+  transition: color .2s ease-in-out; }
+  .f-btn-link.f-grey:hover {
+    color: #95a0a4 !important;
     background-color: transparent !important; }
 
 .f-btn-link.f-primary-l {
   color: #85e0d9 !important; }
   .f-btn-link.f-primary-l:hover {
+    background-color: transparent !important; }
+
+.f-btn-link.f-secondary-l {
+  color: #ec5358 !important; }
+  .f-btn-link.f-secondary-l:hover {
     background-color: transparent !important; }
 
 .mat-input-element {
@@ -60,5 +91,8 @@ mat-dialog-container.mat-dialog-container {
 .mat-form-field.mat-focused .mat-form-field-label,
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
   color: #ec5358 !important; }
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #ec5358 !important; }
 
 /*# sourceMappingURL=styles.css.map */

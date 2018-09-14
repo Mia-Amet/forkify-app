@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAQ,iEAAsD;AAkB9D,oBAMC;EALC,EAAG;IAAE,SAAS,EAAE,QAAS;EACzB,GAAI;IAAE,SAAS,EAAE,WAAY;EAC7B,GAAI;IAAE,SAAS,EAAE,QAAS;EAC1B,GAAI;IAAE,SAAS,EAAE,WAAY;EAC7B,IAAK;IAAE,SAAS,EAAE,QAAS",
+"sources": ["../../../forkify-theme.scss"],
+"names": [],
+"file": "search.component.css"
+}

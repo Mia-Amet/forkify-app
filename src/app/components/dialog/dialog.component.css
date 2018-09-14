@@ -1,4 +1,15 @@
 @import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
 mat-dialog-content.mat-dialog-content {
   background: #e0edeb !important;
   display: flex;
@@ -30,10 +41,10 @@ mat-dialog-content.mat-dialog-content {
 .dialog-title {
   font-weight: 300;
   font-size: 26px;
-  color: #0f0f13; }
+  color: #222b34; }
 
 .dialog-text {
-  color: #0f0f13 !important;
+  color: #222b34 !important;
   font-size: 11px !important; }
 
 /*# sourceMappingURL=dialog.component.css.map */

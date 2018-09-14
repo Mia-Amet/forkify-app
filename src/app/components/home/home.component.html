@@ -1,3 +1,19 @@
-<button mat-button class="f-btn f-btn-link f-primary-l" (click)="onLogout()">
-  Logout
-</button>
+<mat-card class="mb-5">
+  <div class="container">
+    <div class="row d-flex justify-content-between">
+      <div class="col-4"><h1>find recipes<small>...</small></h1></div>
+      <div class="search-form-wrapper mb-3">
+        <app-search (getData)="onGetRecipes($event)"></app-search>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+</mat-card>
+<!-- /mat-card -->
+<div class="container">
+  <div class="mb-5" *ngIf="searchResult">
+    <app-search-result [result]="searchResult" (updateData)="onGetRecipe($event)"></app-search-result>
+  </div>
+  <!-- /mat-card -->
+</div>
+<!-- /.container -->

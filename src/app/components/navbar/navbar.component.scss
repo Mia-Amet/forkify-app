@@ -1,0 +1,28 @@
+@import "../../../forkify-theme";
+
+mat-toolbar {
+  font-size: 13px !important;
+  background: rgba(24, 31, 37, 0.98) !important;
+  position: fixed;
+  z-index: 9999;
+}
+button {
+  position: relative;
+  padding: 0 !important;
+  font-size: 13px !important;
+}
+svg {
+  position: relative;
+  top: -2px;
+}
+nav, .container {
+  height: 100%;
+  position: relative;
+}
+.logo {
+  background: url("/assets/img/logo.png") no-repeat top left;
+  background-size: 120px auto;
+  width: 120px;
+  height: 39px;
+}
+

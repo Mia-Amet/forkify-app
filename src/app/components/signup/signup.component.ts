@@ -21,8 +21,6 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.auth.isAuth()) this.router.navigate(['/']);
-
     this.signupForm = new FormGroup({
       email: new FormControl('',
         [Validators.required, Validators.minLength(5), Validators.email]),
@@ -43,11 +41,11 @@ export class SignupComponent implements OnInit {
 
     this.auth.signup(this.signupForm.value.email, this.signupForm.value.password)
       .then(res => {
-      this.dialog.success('Thank you for signing up to Forkify', 'Success!');
-      this.router.navigate(['/']);
-    }).catch(err => {
-      this.dialog.error(`${err.message}`, `Error!`);
-      this.signupForm.reset();
-    });
+        this.dialog.success(`Nice to meet you, ${this.signupForm.value.email.split('@')[0]}`, 'Success!');
+        this.router.navigate(['/']);
+      }).catch(err => {
+        this.dialog.error(`${err.message}`, `Error!`);
+        this.signupForm.reset();
+      });
   }
 }

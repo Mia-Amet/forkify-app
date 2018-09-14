@@ -11,7 +11,10 @@ export const environment = {
     projectId: "forkify-b3846",
     storageBucket: "forkify-b3846.appspot.com",
     messagingSenderId: "226840341029"
-  }
+  },
+  apiKeyFood2Fork: "f2921dcb2f08b83f562205ecdf276238",
+  apiUrlFood2Fork: "https://www.food2fork.com/api",
+  proxy: "https://cors-anywhere.herokuapp.com/"
 };
 
 /*

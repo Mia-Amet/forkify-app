@@ -1,5 +1,21 @@
 @import "../forkify-theme";
 
+.spinner {
+  z-index: 999;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.toolbar-placeholder {
+  width: 100vw;
+  height: 64px;
+  background: transparent;
+}
+
 footer {
   width: 100%;
   height: 20px;
@@ -9,9 +25,10 @@ footer {
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: -50px;
   a {
-    color: lighten($forkify-background, 10%);
+    color: lighten($forkify-surface, 10%);
+    margin-bottom: 10px;
   }
 }
+
 

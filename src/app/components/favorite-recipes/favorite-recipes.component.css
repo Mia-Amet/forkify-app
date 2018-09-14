@@ -1,0 +1,50 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+mat-card {
+  background: rgba(19, 24, 29, 0.4) !important;
+  box-shadow: none !important; }
+
+h1 {
+  color: #4c5863;
+  font: 900 3.5em/1 'Montserrat' !important; }
+  h1 small {
+    font: 900 0.5em/1 'Montserrat' !important;
+    letter-spacing: 0.05em; }
+
+.no-favorites-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh; }
+
+.svg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .svg-container #bg {
+    position: absolute;
+    z-index: -5;
+    opacity: 0.1;
+    top: 0; }
+  .svg-container #box {
+    position: relative; }
+  .svg-container .splash-line-left {
+    transform: rotate(-35deg);
+    transform-origin: 108px 146px; }
+  .svg-container .splash-line-right {
+    transform: rotate(30deg);
+    transform-origin: 114px 149px; }
+
+/*# sourceMappingURL=favorite-recipes.component.css.map */

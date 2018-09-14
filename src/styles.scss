@@ -3,11 +3,13 @@
 * {
   font-family: 'Raleway', 'Montserrat', sans-serif !important;
   letter-spacing: 0.05em;
+  text-decoration: none !important;
 }
 
 body {
-  background: lighten($forkify-surface, 4%);
+  background: lighten($forkify-surface, 4%) radial-gradient(ellipse, rgba(52, 203, 191, 0.01), $forkify-surface);
 }
+
 .full-width {
   width: 100%;
 }
@@ -25,15 +27,28 @@ mat-dialog-container.mat-dialog-container {
   background-color: #E0EDEB !important;
 }
 
+a.link {
+  color: $forkify-secondary-light !important;
+  margin: 0 20px;
+  transition: border .1s ease-in-out;
+  height: 100%;
+  padding-top: 18px;
+  &:hover {
+    border-bottom: 4px solid $forkify-secondary;
+    cursor: pointer;
+  }
+  &.active {
+    border-bottom: 4px solid $forkify-secondary;
+  }
+}
+
 .f-btn, f-btn:focus {
   outline: none !important;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 .f-btn-small {
   font-size: 12px !important;
 }
-
 .f-btn-flat.f-primary, .f-btn-regular.f-primary {
   background-color: $forkify-primary !important;
   color: $forkify-on-primary !important;
@@ -48,21 +63,26 @@ mat-dialog-container.mat-dialog-container {
     background-color: darken($forkify-secondary-light, 4%) !important;
   }
 }
-
 .f-btn-stroke.f-primary {
   border-color: $forkify-primary;
   color: $forkify-primary !important;
 }
-
-.f-btn-link.f-secondary-l {
-  color: $forkify-secondary-light !important;
+.f-btn-link.f-grey {
+  color: #79888D !important;
+  transition: color .2s ease-in-out;
+  &:hover {
+    color: lighten(#79888D, 10%) !important;
+    background-color: transparent !important;
+  }
+}
+.f-btn-link.f-primary-l {
+  color: lighten($forkify-primary, 20%) !important;
   &:hover {
     background-color: transparent !important;
   }
 }
-
-.f-btn-link.f-primary-l {
-  color: lighten($forkify-primary, 20%) !important;
+.f-btn-link.f-secondary-l {
+  color: $forkify-secondary-light !important;
   &:hover {
     background-color: transparent !important;
   }
@@ -74,6 +94,9 @@ mat-dialog-container.mat-dialog-container {
 .mat-form-field.mat-focused .mat-form-field-label,
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
   color: $forkify-secondary-light !important;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: $forkify-secondary-light !important;
 }
 
 

@@ -5,9 +5,10 @@
   width: 600px;
   opacity: 1 !important;
   padding: 3% 5%;
-  z-index: 0;
-  background: $forkify-background url("../../../assets/patterns/spaceship-night.png") no-repeat -190px 10px;
-  background-size: 1000px auto;
+  background-size: 700px auto;
+  background: rgba(19, 24, 29, 0.65);
+  overflow: hidden;
+  z-index: 99;
 }
 .form-action {
   display: inline-flex;
@@ -15,10 +16,37 @@
   align-items: center;
 }
 
+mat-card-actions {
+  position: relative;
+}
 span, p {
   color: darken($forkify-on-background, 10%) !important;
+}
+span {
+  position: relative;
+  top: -1px;
 }
 a.f-btn-link {
   display: inline-block;
   margin: 4px auto;
+}
+
+.logo {
+  position: relative;
+  left: 8%;
+  height: 55px;
+  width: 166px;
+  background: url("../../../assets/img/logo.png") no-repeat center;
+  background-size: 166px 55px;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url("../../../assets/img/bg.png") no-repeat top left;
+  background-size: 100vw auto;
 }

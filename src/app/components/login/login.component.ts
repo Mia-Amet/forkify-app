@@ -21,7 +21,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.auth.isAuth()) this.router.navigate(['/']);
+    this.auth.token.subscribe(token => {
+      if (token) {
+        this.router.navigate(['/']);
+      }
+    });
 
     this.loginForm = new FormGroup({
       email: new FormControl('',
@@ -41,37 +45,11 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(res => {
-        this.dialog.success('Redirecting to the main page...', 'Success!');
+        this.dialog.success(`Hello, ${this.loginForm.value.email.split('@')[0]}`, 'Success!');
         this.router.navigate(['/']);
       }).catch(err => {
         this.dialog.error(`${err.message}`, `Error!`);
         this.loginForm.reset();
-    });
-  }
-
-  onFbLogin() {
-    // this.auth.signinWithFb()
-    //   .then(res => {
-    //     this.dialog.success('Redirecting to the main page...', 'Success!');
-    //     this.router.navigate(['/']);
-    //   }).catch(err => {
-    //     console.log(err);
-    //     this.dialog.error('Oops... It seems the app is not deployed yet', 'Error!');
-    //     this.loginForm.reset();
-    // });
-
-    this.dialog.error('Oops... It seems the app is not deployed yet', 'Error!');
-    this.loginForm.reset();
-  }
-
-  onGoogleLogin() {
-    this.auth.signinWithGoogle()
-      .then(res => {
-        this.dialog.success('Redirecting to the main page...', 'Success!');
-        this.router.navigate(['/']);
-      }).catch(err => {
-      this.dialog.error(`${err.message}`, `Error!`);
-      this.loginForm.reset();
     });
   }
 }

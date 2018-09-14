@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <div class="container d-flex align-items-center justify-content-between">
+    <a routerLink="/">
+      <div class="logo"></div>
+    </a>
+    <!-- /.logo -->
+    <nav class="nav">
+      <a class="link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      <a class="link" routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Favorites</a>
+      <a class="link" routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">About Us</a>
+    </nav>
+    <!-- /nav -->
+    <button mat-button class="f-btn f-btn-link f-grey" (click)="onLogout()">
+      Logout
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 384 384" width="14px" height="14px">
+        <g>
+          <polygon points="188.373,94.293 160,121.813 198.4,160.213 223.36,170.667 10.667,170.667 10.667,213.333 222.933,213.333     197.547,224.64 159.787,262.187 188.587,289.493 286.08,192   " fill="#838d90"/>
+        </g>
+        <g>
+          <polygon points="138.667,0 96,0 96,42.667 96,85.333 138.667,85.333 138.667,42.667 330.667,42.667 330.667,341.333     138.667,341.333 138.667,298.667 96,298.667 96,341.333 96,384 138.667,384 373.333,384 373.333,0   " fill="#838d90"/>
+        </g>
+      </svg>
+    </button>
+    <!-- /.f-btn.f-btn-link.f-grey -->
+  </div>
+  <!-- /.container -->
+</mat-toolbar>
+<!-- /mat-toolbar -->

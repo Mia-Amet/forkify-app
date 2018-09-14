@@ -1,0 +1,76 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+mat-card {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(19, 24, 29, 0.25) !important;
+  box-shadow: none !important; }
+
+mat-card-header {
+  display: flex;
+  justify-content: space-between; }
+  mat-card-header .mat-card-header-text {
+    margin: 0 !important; }
+
+mat-card-footer {
+  position: relative; }
+
+mat-card-title {
+  position: absolute;
+  top: 40px;
+  padding: 10px 20px !important;
+  background-color: rgba(19, 24, 29, 0.65);
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  max-width: 75% !important; }
+  mat-card-title p {
+    text-indent: -6px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px; }
+
+a {
+  color: inherit !important;
+  transition: color .2s ease-in-out; }
+  a:hover {
+    color: #5ae7bd !important; }
+
+.img {
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.btn-container, .f-btn-fav, .f-btn-link {
+  height: 50px !important;
+  line-height: 50px !important; }
+
+.f-btn-fav {
+  padding: 0 20px !important;
+  background: rgba(19, 24, 29, 0.35) !important; }
+  .f-btn-fav:hover svg {
+    cursor: pointer;
+    transform: scale(1.05);
+    animation: heartBeat .3s ease-in-out; }
+
+.f-btn-link {
+  width: 290px !important;
+  background: rgba(19, 24, 29, 0.65) !important;
+  transition: background-color .3s ease-in-out; }
+  .f-btn-link:hover {
+    background-color: #13181d !important; }
+
+/*# sourceMappingURL=search-result.component.css.map */

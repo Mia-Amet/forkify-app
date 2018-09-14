@@ -1,0 +1,28 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+mat-card {
+  background: rgba(19, 24, 29, 0.4) !important;
+  box-shadow: none !important; }
+
+h1 {
+  color: #4c5863;
+  font: 900 3.5em/1 'Montserrat' !important; }
+  h1 small {
+    font: 900 0.5em/1 'Montserrat' !important;
+    letter-spacing: 0.05em; }
+
+.search-form-wrapper {
+  width: 674px !important;
+  padding-right: 16px; }
+
+/*# sourceMappingURL=home.component.css.map */
