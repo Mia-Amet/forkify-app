@@ -1,0 +1,33 @@
+@import "../../../forkify-theme";
+
+.title p {
+  color: #4c5863;
+  font: 900 8em/0.8 'Montserrat' !important;
+  z-index: 99;
+}
+.content {
+  z-index: 50;
+}
+
+mat-card {
+  background: transparent !important;
+  box-shadow: none !important;
+  z-index: 50;
+  p {
+    font-size: 14px;
+    color: $forkify-on-background;
+    line-height: 24px;
+  }
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url("../../../assets/img/blue-figure.png") no-repeat -200px -100px;
+  background-size: 60vw auto;
+  transform: rotate(180deg);
+}

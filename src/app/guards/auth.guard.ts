@@ -16,15 +16,22 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate(): boolean {
+    this.spinner.show();
+
     this.auth.token.subscribe(res => {
       if (res) this._token = res;
     });
 
     if (!this._token) {
-      this.router.navigate(['/login']);
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+        this.spinner.hide();
+      }, 1000);
+
       return false;
     }
 
+    this.spinner.hide();
     return true;
   }
 }
