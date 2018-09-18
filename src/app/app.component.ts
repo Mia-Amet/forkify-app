@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { SwitchLanguageService } from "./services/switch-language.service";
 import { AuthService } from "./services/auth.service";
 
 @Component({
@@ -9,28 +10,21 @@ import { AuthService } from "./services/auth.service";
 })
 export class AppComponent implements OnInit {
   title = 'Forkify';
-  isToken: boolean;
-  private uid: string;
+  isAuth: boolean;
 
   constructor(
     private router: Router,
+    private switchLanguageService: SwitchLanguageService,
     private auth: AuthService
-  ) { }
+  ) {
+    this.switchLanguageService.setDefaultLanguage();
+  }
 
   ngOnInit() {
-    this.auth.token.subscribe(res => this.isToken = !!res);
-    this.auth.uid.subscribe(res => this.uid = res);
-
-    if (!this.uid) {
-      this.auth.user.subscribe(res => {
-        this.auth.emitUid(res.uid);
-      });
-    }
+    this.auth.authState.subscribe(res => this.isAuth = !!res);
   }
 
   onLogout() {
-    localStorage.clear();
     this.router.navigate(['/login']);
-    this.auth.emitUid('');
   }
 }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MyValidators } from "../../services/my-validators.service";
 import { AuthService } from "../../services/auth.service";
-import { DialogService } from "../../services/dialog.service";
 import { Router } from "@angular/router";
+import { SnackService } from "../../services/snack.service";
 
 @Component({
   selector: 'app-reset-password',
@@ -16,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     public validators: MyValidators,
     private auth: AuthService,
-    private dialog: DialogService,
+    private snack: SnackService,
     private router: Router
   ) { }
 
@@ -31,11 +31,10 @@ export class ResetPasswordComponent implements OnInit {
     const email = this.restoreForm.value.email;
     this.auth.resetPassword(email)
       .then(res => {
-      this.dialog.success(`We just sent an email to ${email}! If you didn't receive it, please check the spam folder`,
-        `All Done!`);
+      this.snack.success(`We just sent an email to ${email}!`);
       this.router.navigate(['/login']);
     }).catch(err => {
-      this.dialog.error(`No user with this email address has been found`, 'Error!');
+      this.snack.error(`No user with this email address has been found`);
       this.restoreForm.reset();
     });
   }

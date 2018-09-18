@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import { Recipe } from "../../models/Recipe";
 import { FavoriteService } from "../../services/favorite.service";
-import { DialogService } from "../../services/dialog.service";
+import { SnackService } from "../../services/snack.service";
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -15,7 +15,7 @@ export class FavoriteRecipesResultComponent implements OnChanges {
 
   constructor(
     private favoriteService: FavoriteService,
-    private dialog: DialogService,
+    private snack: SnackService,
     public spinner: NgxSpinnerService
   ) { }
 
@@ -29,11 +29,17 @@ export class FavoriteRecipesResultComponent implements OnChanges {
     this.spinner.show();
     this.favoriteService.removeFavorite(id)
       .then(() => {
+        let homeCollection = JSON.parse(localStorage.getItem('homeCollection'))
+          .map(item => {
+            if (item.id === id) delete item.id;
+            return item;
+          });
         this.spinner.hide();
-        this.dialog.success(`Recipe "${titleFormat}" was successfully deleted`, 'All Done!');
+        this.snack.success(`The "${titleFormat}" Recipe was removed from favorites`);
+        localStorage.setItem('homeCollection', JSON.stringify(homeCollection));
       }).catch(err => {
         this.spinner.hide();
-        this.dialog.error(`Oops... ${err}`, 'Error!');
+        this.snack.error(`Oops... ${err}`);
       });
   }
 }

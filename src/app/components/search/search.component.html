@@ -1,15 +1,16 @@
 <form [formGroup]="searchForm" class="search-wrapper">
   <mat-form-field class="w-100">
-    <input type="text" name="name" matInput placeholder="by dish name or ingredients" [matAutocomplete]="history" formControlName="name">
+    <input type="text" name="name" matInput placeholder="{{ 'search.inputPlaceholder' | translate }}" [matAutocomplete]="history" formControlName="name">
     <mat-autocomplete #history="matAutocomplete">
       <mat-option *ngFor="let item of filteredOptions | async" [value]="item.name">{{ item.name }}</mat-option>
     </mat-autocomplete>
   </mat-form-field>
   <!-- /mat-form-field -->
   <div class="btn-container w-100 d-flex justify-content-between">
-    <button mat-flat-button class="f-btn f-btn-flat f-primary" type="submit" (click)="onSearch()">Search</button>
+    <button mat-flat-button [my-color]="'primary-light'" class="f-btn f-btn-flat f-primary" type="submit" (click)="onSearch()">
+      {{ 'search.saveBtn' | translate }}
+    </button>
     <!-- /.f-btn.f-btn-flat.f-primary -->
-    <mat-slide-toggle class="f-btn-small" color="accent" name="save" formControlName="save">Save search history</mat-slide-toggle>
   </div>
   <!-- /.btn-container -->
 </form>

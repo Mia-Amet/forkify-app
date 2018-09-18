@@ -10,6 +10,11 @@
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 mat-card {
   background: rgba(19, 24, 29, 0.4) !important;
   box-shadow: none !important; }
@@ -22,7 +27,7 @@ h1 {
     letter-spacing: 0.05em; }
 
 .search-form-wrapper {
-  width: 674px !important;
+  width: 734px !important;
   padding-right: 16px; }
 
 /*# sourceMappingURL=home.component.css.map */

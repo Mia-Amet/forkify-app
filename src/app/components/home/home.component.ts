@@ -3,9 +3,10 @@ import { Recipe } from "../../models/Recipe";
 import { SearchService } from "../../services/search.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { FavoriteService } from "../../services/favorite.service";
-import { DialogService } from "../../services/dialog.service";
+import { SnackService } from "../../services/snack.service";
 import { AuthService } from "../../services/auth.service";
-import { UsersService } from "../../services/users.service";
+import { UserService } from "../../services/user.service";
+import { User } from "firebase";
 
 @Component({
   selector: 'app-home',
@@ -14,29 +15,23 @@ import { UsersService } from "../../services/users.service";
 })
 export class HomeComponent implements OnInit {
   searchResult: Recipe[] = JSON.parse(localStorage.getItem('homeCollection'));
-  private uid: string;
+  user: User;
 
   constructor(
     private searchService: SearchService,
     public spinner: NgxSpinnerService,
     private favoriteService: FavoriteService,
-    private dialog: DialogService,
     private auth: AuthService,
-    private usersService: UsersService
+    private userService: UserService,
+    private snack: SnackService
   ) { }
 
   ngOnInit() {
-    this.auth.uid.subscribe(res => {
-      if (!res) return;
-
-      this.uid = res;
-      this.favoriteService.userFavorites = this.usersService.getUserFavorites(this.uid);
-    });
+    this.auth.user.subscribe(user => this.user = user);
 
     if (!this.searchResult) {
-      this.spinner.show();
       this.searchService.searchRecipe('').subscribe(res => {
-        this.spinner.hide();
+        this.spinner.show();
 
         this.favoriteService.getFavoriteRecipes().subscribe(favorites => {
           this.searchResult = res.map(item => {
@@ -47,10 +42,14 @@ export class HomeComponent implements OnInit {
           });
 
           localStorage.setItem('homeCollection', JSON.stringify(this.searchResult));
+        }, err => {
+          console.log(err);
         });
       }, err => {
         this.spinner.hide();
-        this.dialog.error(`Oops... ${err}`, 'Error!');
+        this.snack.error(`Oops... ${err}`);
+      }, () => {
+        this.spinner.hide();
       });
     }
   }

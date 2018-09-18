@@ -2,7 +2,7 @@ import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core
 import { Recipe } from "../../models/Recipe";
 import { FavoriteService } from "../../services/favorite.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { DialogService } from "../../services/dialog.service";
+import { SnackService } from "../../services/snack.service";
 
 @Component({
   selector: 'app-search-result',
@@ -10,17 +10,34 @@ import { DialogService } from "../../services/dialog.service";
   styleUrls: ['./search-result.component.scss']
 })
 export class SearchResultComponent implements OnChanges {
+  recipesShowcase: Recipe[] = [];
+  recipePerPage: number = 9;
+  currentPage: number = 1;
+  pages: number = 0;
+  pagesArr: number[] = [];
 
   @Input('result') searchResult: Recipe[];
   @Output() updateData: EventEmitter<Recipe> = new EventEmitter();
 
   constructor(
     private favoriteService: FavoriteService,
-    private dialog: DialogService,
-    public spinner: NgxSpinnerService
+    public spinner: NgxSpinnerService,
+    private snack: SnackService
   ) { }
 
   ngOnChanges() {
+    this.pages = Math.ceil(this.searchResult.length / this.recipePerPage);
+    for (let i = 0; i < this.pages; i++) {
+      this.pagesArr[i] = i + 1;
+    }
+    this.showPage();
+  }
+
+  showPage(pageNumber: number = 1) {
+    this.currentPage = pageNumber;
+    const start = (pageNumber - 1) * this.recipePerPage;
+    const end = pageNumber * this.recipePerPage;
+    this.recipesShowcase = this.searchResult.slice(start, end);
   }
 
   onSave(recipe: Recipe) {
@@ -30,7 +47,7 @@ export class SearchResultComponent implements OnChanges {
     this.favoriteService.saveFavorite(recipe)
       .then(() => {
         this.spinner.hide();
-        this.dialog.success(`Recipe "${title}" was added to favorites`, 'Success!');
+        this.snack.success(`The "${title}" Recipe was saved to favorites`);
 
         this.favoriteService.getFavoriteRecipes().subscribe(res => {
           res.forEach(item => {
@@ -39,7 +56,7 @@ export class SearchResultComponent implements OnChanges {
         });
       }).catch(err => {
         this.spinner.hide();
-        this.dialog.error(`Oops... ${err}`, 'Error!');
+        this.snack.error(`Oops... ${err}`);
       });
   }
 
@@ -51,7 +68,7 @@ export class SearchResultComponent implements OnChanges {
     this.favoriteService.removeFavorite(id)
       .then(() => {
         this.spinner.hide();
-        this.dialog.success(`Recipe "${title}" was successfully deleted`, 'All Done!');
+        this.snack.success(`The "${title}" Recipe was removed from favorites`);
 
         this.updateData.emit({
           f2f_url: item.f2f_url,
@@ -65,7 +82,7 @@ export class SearchResultComponent implements OnChanges {
         });
       }).catch(err => {
         this.spinner.hide();
-        this.dialog.error(`Oops... ${err}`, 'Error!');
+        this.snack.error(`Oops... ${err}`);
       });
   }
 }

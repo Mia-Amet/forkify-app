@@ -10,6 +10,11 @@
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 mat-card {
   display: flex !important;
   flex-direction: column;
@@ -44,7 +49,7 @@ a {
   color: inherit !important;
   transition: color .2s ease-in-out; }
   a:hover {
-    color: #5ae7bd !important; }
+    color: #60e7c5 !important; }
 
 .img {
   height: 220px;

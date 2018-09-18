@@ -5,24 +5,22 @@ import { map } from "rxjs/operators";
 import { Recipe } from "../models/Recipe";
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from "angularfire2/firestore";
 import { AuthService } from "./auth.service";
-import { UsersService } from "./users.service";
+import { UserService } from "./user.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
-  private _userFavorites: AngularFirestoreCollection;
+  userFavorites: AngularFirestoreCollection = this.userService.getUserFavorites();
 
   constructor(
     private http: HttpClient,
     private afs: AngularFirestore,
     private auth: AuthService,
-    private userService: UsersService
+    private userService: UserService
   ) { }
 
   getFavoriteRecipes(): Observable<Recipe[]> {
-    if (!this.userFavorites) return;
-
     return this.userFavorites.snapshotChanges().pipe(
       map(recipes => recipes.map(item => {
         const data = item.payload.doc.data();
@@ -48,13 +46,5 @@ export class FavoriteService {
 
   removeFavorite(id: string): Promise<void> {
     return this.userFavorites.doc(id).delete();
-  }
-
-  public set userFavorites(value: AngularFirestoreCollection) {
-    this._userFavorites = value;
-  }
-
-  public get userFavorites(): AngularFirestoreCollection {
-    return this._userFavorites;
   }
 }

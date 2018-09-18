@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AuthService } from "../services/auth.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Observable } from "rxjs";
+import {first, map} from "rxjs/operators";
+import { async } from "@angular/core/testing";
+import { User } from "firebase";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  private _token: string;
 
   constructor(
     private router: Router,
@@ -15,23 +18,17 @@ export class AuthGuard implements CanActivate {
     public spinner: NgxSpinnerService
   ) { }
 
-  canActivate(): boolean {
-    this.spinner.show();
-
-    this.auth.token.subscribe(res => {
-      if (res) this._token = res;
-    });
-
-    if (!this._token) {
-      setTimeout(() => {
-        this.router.navigate(['/login']);
-        this.spinner.hide();
-      }, 1000);
-
-      return false;
-    }
-
-    this.spinner.hide();
-    return true;
+  canActivate(): Observable<boolean> | boolean {
+    return this.auth.authState.pipe(
+      map(auth => {
+        if (auth) {
+          return true;
+        } else {
+          this.router.navigate(['/login']);
+          return false;
+        }
+      }),
+      first()
+    );
   }
 }

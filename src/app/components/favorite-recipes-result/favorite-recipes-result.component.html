@@ -19,12 +19,12 @@
             </svg>
           </a>
           <!-- /.f-btn.f-btn-fav -->
-          <a mat-button class="f-btn f-btn-link f-primary-l m-0">Full recipe
+          <button [layout-btn]="'primary'" [bgColor]="'dark'" [hover]="'darker'" [width]="290" [weight]="500" class="m-0">
+            {{ 'Full recipe' | uppercase }}
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 199.405 199.405" width="10px" height="10px">
-              <polygon points="99.703,199.405 199.405,99.702 99.703,0 71.418,28.285 124.662,81.529 0,81.529 0,117.876 124.662,117.876 71.418,171.12" fill="#77C2BC"/>
+              <polygon points="99.703,199.405 199.405,99.702 99.703,0 71.418,28.285 124.662,81.529 0,81.529 0,117.876 124.662,117.876 71.418,171.12"/>
             </svg>
-          </a>
-          <!-- /.f-btn.f-btn-link.f-secondary-l -->
+          </button>
         </div>
         <!-- /.btn-container -->
       </mat-card-footer>

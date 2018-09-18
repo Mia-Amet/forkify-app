@@ -7,6 +7,7 @@ import { FavoriteRecipesComponent } from "./components/favorite-recipes/favorite
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
+import { SettingsComponent } from "./components/settings/settings.component";
 import { AuthGuard } from "./guards/auth.guard";
 
 export const routes: Routes = [

@@ -10,6 +10,11 @@
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 .background {
   width: 100vw;
   height: 100vh;
@@ -36,7 +41,7 @@
     color: #29353F;
     font: 900 14em/0.8 'Montserrat' !important; }
   .digits a {
-    color: #5ae7bd;
+    color: #60e7c5;
     z-index: 999; }
 
 /*# sourceMappingURL=not-found.component.css.map */

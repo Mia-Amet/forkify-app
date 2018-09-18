@@ -1,4 +1,4 @@
-<div class="main-nav-container" *ngIf="isToken">
+<div class="main-nav-container" *ngIf="isAuth">
   <app-navbar (logout)="onLogout($event)"></app-navbar>
   <!-- /app-navbar -->
   <div class="toolbar-placeholder"></div>

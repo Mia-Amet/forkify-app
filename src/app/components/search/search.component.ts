@@ -5,8 +5,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
 import { Recipe } from "../../models/Recipe";
-import { DialogService } from "../../services/dialog.service";
 import { FavoriteService } from "../../services/favorite.service";
+import { SnackService } from "../../services/snack.service";
+import { SaveHistoryService } from "../../services/save-history.service";
 
 @Component({
   selector: 'app-search',
@@ -17,20 +18,21 @@ export class SearchComponent implements OnInit {
   searchForm: FormGroup;
   searchHistory = [];
   filteredOptions: Observable<string[]>;
+  saveSearch: boolean = false;
 
   @Output() getData: EventEmitter<Recipe[]> = new EventEmitter();
 
   constructor(
     private searchService: SearchService,
     public spinner: NgxSpinnerService,
-    private dialog: DialogService,
-    private favoriteService: FavoriteService
+    private snack: SnackService,
+    private favoriteService: FavoriteService,
+    private saveHistoryService: SaveHistoryService
   ) { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      name: new FormControl(''),
-      save: new FormControl(false)
+      name: new FormControl('')
     });
 
     this.searchService.getSearchHistory().subscribe(res => this.searchHistory = res);
@@ -38,10 +40,13 @@ export class SearchComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
+
+    this.saveHistoryService.historyStateExp.subscribe(state => this.saveSearch = state);
   }
 
   onSearch() {
     this.spinner.show();
+
     this.searchService.searchRecipe(this.searchForm.value.name).subscribe(res => {
       this.favoriteService.getFavoriteRecipes().subscribe(favorites => {
         this.getData.emit(res.map(item => {
@@ -52,15 +57,16 @@ export class SearchComponent implements OnInit {
         }));
       });
 
-      if (this.searchForm.value.save) {
-        if (this.searchHistory.some(item => item.name === this.searchForm.value.name)) return;
+      const name = this.searchForm.value.name;
+      if (this.saveSearch) {
+        if (this.searchHistory.some(item => item.name === name) || !name) return;
         this.searchService.saveSearchHistory(this.searchForm.value.name);
       }
     }, err => {
-      this.dialog.error(`Oops... ${err}`, 'Error!');
+      this.snack.error(`Oops... ${err}`);
     }, () => {
       this.spinner.hide();
-      this.searchForm.patchValue({ name: '', save: false });
+      this.searchForm.patchValue({ name: '' });
     });
   }
 

@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "homeLink": "Главная",
+    "favoritesLink": "Избранное",
+    "aboutLink": "Кто мы?",
+    "settingsLink": "Мои настройки",
+    "logoutLink": "Выйти"
+  },
+  "settings": {
+    "switchLang": "Выбрать язык",
+    "saveSearch": "Сохранять историю поиска",
+    "saveSettings": "Сохранить настройки"
+  },
+  "login": {
+    "title": "Вход",
+    "noAccount": "Еще нет аккаунта?",
+    "forgotPassword": "Напомнить пароль?",
+    "email": "Почта",
+    "password": "Пароль"
+  },
+  "restorePassword": {
+    "title": "Восстановление пароля",
+    "hint": "Пожалуйста введите ваш email, указанный при регистрации",
+    "submitBtn": "Восстановить",
+    "cancelBtn": "Отмена"
+  },
+  "signUp": {
+    "title": "Регистрация",
+    "haveAccount": "Уже есть аккаунт?",
+    "confirm": "Подтвердить пароль"
+  },
+  "search": {
+    "submitBtn": "Сохранить",
+    "inputPlaceholder": "по названию или ингридиентам"
+  },
+  "home": {
+    "title": "ищите рецепты"
+  }
+}

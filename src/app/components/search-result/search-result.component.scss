@@ -63,11 +63,42 @@ a {
     animation: heartBeat .3s ease-in-out;
   }
 }
-.f-btn-link {
-  width: 290px !important;
-  background: rgba(19, 24, 29, 0.65) !important;
-  transition: background-color .3s ease-in-out;
+//.f-btn-link {
+//  width: 290px !important;
+//  background: rgba(19, 24, 29, 0.65) !important;
+//  transition: background-color .3s ease-in-out;
+//  &:hover {
+//    background-color: $forkify-background !important;
+//  }
+//}
+.f-btn-prev, .f-btn-next, .f-btn-number {
+  position: relative;
+  background: transparent !important;
+  color: $forkify-on-surface !important;
+  width: fit-content !important;
+  height: fit-content !important;
+  line-height: 30px !important;
   &:hover {
-    background-color: $forkify-background !important;
+    color: lighten($forkify-on-surface, 10%) !important;
   }
 }
+.mat-button.f-btn-number {
+  max-width: 30px !important;
+  min-width: 30px !important;
+}
+.mat-button[disabled][disabled] {
+  opacity: .5 !important;
+  &:hover {
+    color: $forkify-on-surface !important;
+  }
+}
+
+svg {
+  position: relative;
+  top: -1px;
+}
+
+#rotate {
+  transform: rotate(180deg);
+}
+

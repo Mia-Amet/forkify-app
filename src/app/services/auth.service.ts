@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from "angularfire2/auth";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable, of } from "rxjs";
+import { AngularFireAuth } from "angularfire2/auth";
 import { User } from "firebase";
 import UserCredential = firebase.auth.UserCredential;
 
@@ -9,39 +9,30 @@ import UserCredential = firebase.auth.UserCredential;
   providedIn: 'root'
 })
 export class AuthService {
-  private _uid: BehaviorSubject<string> = new BehaviorSubject('');
-  public uid = this._uid.asObservable();
+  user: Observable<User>;
+  authState: Observable<User | null>;
 
   constructor(
     private afAuth: AngularFireAuth,
     private http: HttpClient
-  ) { }
-
-  emitUid(value: string): void {
-    this._uid.next(value);
+  ) {
+    this.user = this.afAuth.user;
+    this.authState = this.afAuth.authState;
   }
 
   login(email: string, password: string): Promise<UserCredential> {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  logout(): Promise<any> {
-    return this.afAuth.auth.signOut();
-  }
-
   signup(email: string, password: string): Promise<UserCredential> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
+  logout(): Promise<void> {
+    return this.afAuth.auth.signOut();
+  }
+
   resetPassword(email: string): Promise<void> {
     return this.afAuth.auth.sendPasswordResetEmail(email);
-  }
-
-  public get token(): Observable<string | null> {
-    return this.afAuth.idToken;
-  }
-
-  public get user(): Observable<User> {
-    return this.afAuth.user;
   }
 }

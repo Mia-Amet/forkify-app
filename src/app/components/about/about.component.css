@@ -10,6 +10,11 @@
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 .title p {
   color: #4c5863;
   font: 900 8em/0.8 'Montserrat' !important;

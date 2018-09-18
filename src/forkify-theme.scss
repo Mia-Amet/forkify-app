@@ -1,7 +1,7 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 $forkify-primary: #34cbbf;
-$forkify-primary-light: #5ae7bd;
+$forkify-primary-light: #60e7c5;
 $forkify-secondary: #B42845;
 $forkify-secondary-light: #ec5358;
 $forkify-accent: #FDBF2D;
@@ -13,7 +13,7 @@ $forkify-error: #911238;
 $forkify-on-primary: #ffffff;
 $forkify-on-secondary: #122022;
 $forkify-on-background: #d9dcda;
-$forkify-on-surface: #f1f9f2;
+$forkify-on-surface: #9ca9b4;
 $forkify-on-error: #d9dcda;
 
 @keyframes heartBeat {
@@ -23,6 +23,12 @@ $forkify-on-error: #d9dcda;
   75% { transform: scale(1.05) }
   100% { transform: scale(1) }
 }
+
+@keyframes wheelSpin {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
+
 
 
 

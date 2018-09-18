@@ -10,6 +10,11 @@
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 mat-card {
   display: flex !important;
   flex-direction: column;
@@ -44,7 +49,7 @@ a {
   color: inherit !important;
   transition: color .2s ease-in-out; }
   a:hover {
-    color: #5ae7bd !important; }
+    color: #60e7c5 !important; }
 
 .img {
   height: 220px;
@@ -66,11 +71,30 @@ a {
     transform: scale(1.05);
     animation: heartBeat .3s ease-in-out; }
 
-.f-btn-link {
-  width: 290px !important;
-  background: rgba(19, 24, 29, 0.65) !important;
-  transition: background-color .3s ease-in-out; }
-  .f-btn-link:hover {
-    background-color: #13181d !important; }
+.f-btn-prev, .f-btn-next, .f-btn-number {
+  position: relative;
+  background: transparent !important;
+  color: #9ca9b4 !important;
+  width: fit-content !important;
+  height: fit-content !important;
+  line-height: 30px !important; }
+  .f-btn-prev:hover, .f-btn-next:hover, .f-btn-number:hover {
+    color: #b9c2ca !important; }
+
+.mat-button.f-btn-number {
+  max-width: 30px !important;
+  min-width: 30px !important; }
+
+.mat-button[disabled][disabled] {
+  opacity: .5 !important; }
+  .mat-button[disabled][disabled]:hover {
+    color: #9ca9b4 !important; }
+
+svg {
+  position: relative;
+  top: -1px; }
+
+#rotate {
+  transform: rotate(180deg); }
 
 /*# sourceMappingURL=search-result.component.css.map */

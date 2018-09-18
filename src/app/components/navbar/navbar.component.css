@@ -10,6 +10,11 @@
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 mat-toolbar {
   font-size: 13px !important;
   background: rgba(24, 31, 37, 0.98) !important;
@@ -25,7 +30,7 @@ svg {
   position: relative;
   top: -2px; }
 
-nav, .container {
+nav, .container, .settings-btn {
   height: 100%;
   position: relative; }
 

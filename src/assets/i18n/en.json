@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "homeLink": "Home",
+    "favoritesLink": "Favorites",
+    "aboutLink": "About Us",
+    "settingsLink": "My Settings",
+    "logoutLink": "Logout"
+  },
+  "settings": {
+    "switchLang": "Select language",
+    "saveSearch": "Save search history",
+    "saveSettings": "Save Settings"
+  },
+  "login": {
+    "title": "Sign In",
+    "noAccount": "Don't have an account yet?",
+    "forgotPassword": "Forgot your password?",
+    "email": "Email",
+    "password": "Password"
+  },
+  "restorePassword": {
+    "title": "Restoring Password",
+    "hint": "Please enter your registration email",
+    "submitBtn": "Send restore link",
+    "cancelBtn": "Cancel"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "confirm": "Confirm Password"
+  },
+  "search": {
+    "saveBtn": "Save",
+    "inputPlaceholder": "by dish name or ingredients"
+  },
+  "home": {
+    "title": "find recipes"
+  }
+}

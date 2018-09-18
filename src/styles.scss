@@ -17,14 +17,8 @@ body {
   width: 48%;
 }
 
-mat-dialog-container.mat-dialog-container {
-  position: fixed !important;
-  bottom: 40px;
-  right: 40px;
-  width: 300px !important;
-  height: max-content !important;
-  padding: 0;
-  background-color: #E0EDEB !important;
+.link-btn-hover {
+
 }
 
 a.link {
@@ -33,12 +27,9 @@ a.link {
   transition: border .1s ease-in-out;
   height: 100%;
   padding-top: 18px;
-  &:hover {
+  &:hover, &.active {
     border-bottom: 4px solid $forkify-secondary;
     cursor: pointer;
-  }
-  &.active {
-    border-bottom: 4px solid $forkify-secondary;
   }
 }
 
@@ -49,42 +40,36 @@ a.link {
 .f-btn-small {
   font-size: 12px !important;
 }
-.f-btn-flat.f-primary, .f-btn-regular.f-primary {
-  background-color: $forkify-primary !important;
-  color: $forkify-on-primary !important;
-  &:hover {
-    background-color: darken($forkify-primary, 7%) !important;
+
+.dash {
+  position: absolute;
+  bottom: 0;
+  right: -540px;
+  height: 4px;
+  width: 340px;
+  background: linear-gradient(45deg, $forkify-primary-light, $forkify-primary);
+  transition: right .2s ease-in;
+}
+.settings-btn {
+  color: $forkify-primary-light !important;
+  transition: border .2s ease-in-out;
+  padding: 0 0 12px !important;
+  svg path:last-of-type {
+    animation: none;
   }
-}
-.f-btn-flat.f-secondary-l, f-btn-regular.f-secondary-l {
-  background-color: $forkify-secondary-light !important;
-  color: $forkify-on-secondary !important;
-  &:hover {
-    background-color: darken($forkify-secondary-light, 4%) !important;
+  &:hover, &.active {
+    cursor: pointer;
+    border-bottom: 4px solid $forkify-primary;
   }
-}
-.f-btn-stroke.f-primary {
-  border-color: $forkify-primary;
-  color: $forkify-primary !important;
-}
-.f-btn-link.f-grey {
-  color: #79888D !important;
-  transition: color .2s ease-in-out;
-  &:hover {
-    color: lighten(#79888D, 10%) !important;
-    background-color: transparent !important;
+  &.active ~.dash {
+    right: -70px;
   }
-}
-.f-btn-link.f-primary-l {
-  color: lighten($forkify-primary, 20%) !important;
-  &:hover {
-    background-color: transparent !important;
-  }
-}
-.f-btn-link.f-secondary-l {
-  color: $forkify-secondary-light !important;
-  &:hover {
-    background-color: transparent !important;
+  &.active svg path {
+    animation: wheelSpin 2s linear infinite;
+    transform-origin: center;
+    &:last-of-type {
+      animation-direction: reverse;
+    }
   }
 }
 
@@ -99,5 +84,60 @@ a.link {
   background-color: $forkify-secondary-light !important;
 }
 
+mat-list-item mat-slide-toggle.mat-slide-toggle .mat-slide-toggle-label {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  width: inherit !important;
+  justify-content: space-between;
+  .mat-slide-toggle-bar {
+    margin: 0;
+    background-color: rgba(176,190,197,.5) !important;
+    .mat-slide-toggle-thumb {
+      background-color: rgb(149, 176, 180) !important;
+    }
+  }
+}
+mat-list-item mat-slide-toggle.mat-slide-toggle.mat-checked .mat-slide-toggle-label {
+  .mat-slide-toggle-bar {
+    background-color: rgba(52, 203, 191, 0.5) !important;
+    .mat-slide-toggle-thumb {
+      background-color: $forkify-primary !important;
+    }
+  }
+}
+.mat-list .mat-list-item .mat-list-item-content {
+  padding: 0 !important;
+  width: inherit;
+  display: flex;
+  justify-content: space-between;
+}
 
+.snack-bar-error, .snack-bar-success {
+  position: relative;
+  overflow: hidden;
+  background: $forkify-on-background;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 0 !important;
+  height: 56px;
+  padding: 20px !important;
+  max-width: 800px !important;
+}
 
+#userSettings {
+  background: #f5fffa;
+  border-radius: 0 !important;
+  z-index: 999 !important;
+}
+
+.mat-menu-panel {
+  position: relative;
+  top: -4px;
+  background-color: #F5FFFA;
+  min-width: 40px !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  .mat-menu-content {
+    width: 100px;
+    padding: 0 !important;
+  }
+}

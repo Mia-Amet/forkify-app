@@ -5,7 +5,7 @@
   <!-- /.favorites-container -->
   <div class="no-favorites-container mb-5" *ngIf="!favoriteRecipes?.length">
     <div class="svg-container">
-      <svg id="box" class="mb-5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" viewBox="0 0 192.60036 248.50571">
+      <svg id="box" class="mb-5" xmlns="http://www.w3.org/2000/svg" width="200px" viewBox="0 0 192.60036 248.50571">
         <defs>
           <linearGradient id="a" x1="30.5671" y1="172.40813" x2="173.51779" y2="172.40813" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#3583a8"/>
@@ -217,7 +217,9 @@
     </div>
     <!-- /.svg-container -->
     <p class="text-center text-white">You have not saved any recipes yet...</p>
-    <button mat-flat-button class="f-btn f-btn-flat f-primary mt-2" routerLink="/">Go Back to the Home Page</button>
+    <button mat-flat-button [my-color]="'primary-light'" class="f-btn f-btn-flat f-primary mt-2" routerLink="/">
+      Go Back to the Home Page
+    </button>
     <!-- /.f-btn.f-btn-flat.f-primary -->
   </div>
   <!-- /.no-favorites-container -->

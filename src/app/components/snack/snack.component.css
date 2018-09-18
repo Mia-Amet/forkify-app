@@ -1,0 +1,67 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 100%; }
+  .container:hover {
+    cursor: pointer; }
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  border: 0 !important;
+  outline: none !important;
+  background: transparent;
+  fill: #222b34;
+  opacity: 0.65; }
+  .close-btn:hover {
+    cursor: pointer; }
+
+.dialog-text {
+  color: #13181d !important;
+  font: 500 13px/1.5 'Montserrat', 'Raleway', sans-serif !important;
+  margin: 0 56px;
+  text-align: left;
+  text-wrap: none; }
+
+.icon-bg-success {
+  background: #2faa6a; }
+
+.icon-bg-error {
+  background: #641729; }
+
+.icon-bg-error, .icon-bg-success {
+  position: absolute;
+  height: 56px;
+  width: 56px;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.icon-success svg, .icon-error svg {
+  z-index: 99;
+  position: relative; }
+
+/*# sourceMappingURL=snack.component.css.map */

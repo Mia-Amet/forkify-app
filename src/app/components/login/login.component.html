@@ -3,19 +3,18 @@
   <!-- /.logo -->
   <mat-card class="mat-card-container mt-5">
     <mat-card-content class="d-flex align-items-center justify-content-between">
-      <mat-card-title class="mb-0">LOGIN</mat-card-title>
-      <mat-card-actions class="mt-0 f-btn-small">
-        <span class="mb-0">Don't have an account yet?</span>
-        <a mat-button class="f-btn f-btn-link f-secondary-l" routerLink="/signup">
-          Sign Up
-        </a>
-      </mat-card-actions>
+      <mat-card-title class="mb-0">{{ 'login.title' | translate }}</mat-card-title>
+      <div class="mt-0">
+        <span class="mb-0 f-btn-small">{{ 'login.noAccount' | translate }}</span>
+        <a [link-btn]="'secondary'" [size]="14" [weight]="500" class="d-inline-block ml-3" routerLink="/signup">
+          {{ 'signUp.title' | translate }}</a>
+      </div>
     </mat-card-content>
     <!-- /mat-card-content -->
     <mat-card-content class="mb-0">
       <form [formGroup]="loginForm" class="d-flex justify-content-between flex-wrap" (ngSubmit)="onLogin()">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ 'login.email' | translate }}</mat-label>
           <input matInput placeholder="Email" formControlName="email">
           <mat-error *ngIf="loginForm.get('email').invalid && loginForm.get('email').dirty">
             {{ validators.getErrorMsg(loginForm.get('email')) }}
@@ -23,17 +22,19 @@
         </mat-form-field>
         <!-- /mat-form-field -->
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Password</mat-label>
+          <mat-label>{{ 'login.password' | translate }}</mat-label>
           <input matInput placeholder="Password" type="password" formControlName="password">
           <mat-error *ngIf="loginForm.get('password').invalid && loginForm.get('password').dirty">
             {{ validators.getErrorMsg(loginForm.get('password')) }}
           </mat-error>
         </mat-form-field>
         <!-- /mat-form-field -->
-        <button mat-flat-button class="f-btn f-btn-flat f-primary full-width mt-2" type="submit">Login</button>
+        <button mat-flat-button [my-color]="'primary-light'" class="f-btn full-width mt-2" type="submit">
+          {{ 'login.title' | translate }}
+        </button>
         <!-- /.f-btn.f-btn-flat.f-primary -->
-        <a mat-button class="f-btn f-btn-link f-primary-l f-btn-small" routerLink="/reset-password">
-          Forget your password?
+        <a [link-btn]="'primary-light'" [size]="12" class="d-block ml-auto mr-auto mt-3" routerLink="/reset-password">
+          {{ 'login.forgotPassword' | translate }}
         </a>
         <!-- /.f-btn.f-btn-link.f-primary-l -->
       </form>
