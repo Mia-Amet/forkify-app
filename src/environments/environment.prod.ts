@@ -8,7 +8,7 @@ export const environment = {
     storageBucket: "forkify-b3846.appspot.com",
     messagingSenderId: "226840341029"
   },
-  apiKeyFood2Fork: "f2921dcb2f08b83f562205ecdf276238",
+  apiKeyFood2Fork: "42b23ebb564fb3ffc1c1e10faafb3625",
   apiUrlFood2Fork: "https://www.food2fork.com/api",
   proxy: "https://cors-anywhere.herokuapp.com/"
 };
