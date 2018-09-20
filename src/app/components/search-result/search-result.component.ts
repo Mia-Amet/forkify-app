@@ -44,44 +44,38 @@ export class SearchResultComponent implements OnChanges {
     });
   }
 
-  onDetails() {
+  onDetails(): void {
     if (this.searchResult) this.recipeService.emitList(this.searchResult);
   }
 
-  showPage(pageNumber: number = this.currentPage) {
+  showPage(pageNumber: number = this.currentPage): void {
     const start = (pageNumber - 1) * this.recipePerPage;
     const end = pageNumber * this.recipePerPage;
     this.recipesShowcase = this.searchResult.slice(start, end);
   }
 
-  onSave(recipe: Recipe) {
+  onSave(recipe: Recipe): void {
     const title = recipe.title.length > 20 ? `${recipe.title.slice(0, 20)}...` : recipe.title;
 
     this.spinner.show();
     this.favoriteService.saveFavorite(recipe)
       .then(() => {
-        this.spinner.hide();
         this.snack.success(`The "${title}" Recipe was saved to favorites`);
 
-        this.favoriteService.getFavoriteRecipes().subscribe(res => {
-          res.forEach(item => {
-            if (item.title === recipe.title) this.updateData.emit(item);
-          });
-        });
-      }).catch(err => {
-        this.spinner.hide();
-        this.snack.error(`Oops... ${err}`);
-      });
+        this.favoriteService.getFavoriteRecipes().subscribe(res => res.forEach(item => {
+          if (item.title === recipe.title) this.updateData.emit(item);
+        }));
+      }).catch(err => this.snack.error(`Oops... ${err}`));
+    this.spinner.hide();
   }
 
-  onRemove(id: string) {
+  onRemove(id: string): void {
     const item = this.searchResult.filter(item => item.id === id)[0];
     const title = item.title.length > 20 ? `${item.title.slice(0, 20)}...` : item.title.slice();
 
     this.spinner.show();
     this.favoriteService.removeFavorite(id)
       .then(() => {
-        this.spinner.hide();
         this.snack.success(`The "${title}" Recipe was removed from favorites`);
 
         this.updateData.emit({
@@ -94,9 +88,7 @@ export class SearchResultComponent implements OnChanges {
           source_url: item.source_url,
           title: item.title
         });
-      }).catch(err => {
-        this.spinner.hide();
-        this.snack.error(`Oops... ${err}`);
-      });
+      }).catch(err => this.snack.error(`Oops... ${err}`));
+    this.spinner.hide();
   }
 }

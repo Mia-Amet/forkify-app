@@ -40,17 +40,10 @@ export class HomeComponent implements OnInit {
             }
             return item;
           });
-
           localStorage.setItem('homeCollection', JSON.stringify(this.searchResult));
-        }, err => {
-          console.log(err);
-        });
-      }, err => {
-        this.spinner.hide();
-        this.snack.error(`Oops... ${err}`);
-      }, () => {
-        this.spinner.hide();
-      });
+        }, err => console.log(err));
+      }, err => this.snack.error(`Oops... ${err}`),
+        () => this.spinner.hide());
     }
   }
 

@@ -26,8 +26,7 @@
       </div>
       <!-- /.my-container-fluid -->
       <mat-card class="heading">
-        <button mat-fab [hidden]="recipe?.id" class="f-btn f-btn-fav" title="Add to favorites"
-                (click)="onSave(recipe)">
+        <button mat-fab [hidden]="recipe?.id" class="f-btn f-btn-fav" title="Add to favorites" (click)="onSave()">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 471.701 471.701" width="20px" height="20px">
             <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
                   c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,
@@ -39,8 +38,7 @@
                   434.001,213.101,414.401,232.701z" fill="#ffffff"/>
           </svg>
         </button>
-        <button mat-fab *ngIf="recipe?.id" class="f-btn f-btn-fav" title="Remove from favorites"
-                (click)="onRemove(recipe.id)">
+        <button mat-fab *ngIf="recipe?.id" class="f-btn f-btn-fav" title="Remove from favorites" (click)="onRemove()">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 510 510">
             <path d="M255,489.6l-35.7-35.7C86.7,336.6,0,257.55,0,160.65C0,81.6,61.2,20.4,140.25,20.4c43.35,0,86.7,
                   20.4,114.75,53.55 C283.05,40.8,326.4,20.4,369.75,20.4C448.8,20.4,510,81.6,510,160.65c0,96.9-86.7,

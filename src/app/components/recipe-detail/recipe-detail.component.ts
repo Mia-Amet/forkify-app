@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from "../../services/recipe.service";
-import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { FavoriteService } from "../../services/favorite.service";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Recipe, RecipeDetail, RecipeExt, RequestRecipe } from "../../models/Recipe";
 import { NgxSpinnerService } from "ngx-spinner";
+import { SnackService } from "../../services/snack.service";
 import { Observable } from "rxjs";
 import { FakeRecipe } from "../../helpers/fakeRecipe"
 import { Location } from "@angular/common";
@@ -29,7 +31,9 @@ export class RecipeDetailComponent implements OnInit {
     private router: Router,
     public spinner: NgxSpinnerService,
     private faker: FakeRecipe,
-    private location: Location
+    private location: Location,
+    private favoriteService: FavoriteService,
+    private snack: SnackService
   ) { }
 
   ngOnInit() {
@@ -68,7 +72,12 @@ export class RecipeDetailComponent implements OnInit {
         this.description = new Observable(observer => observer.next(this.faker.getDescription(res.recipe.title)));
       }
     }, err => console.log(err),
-      () => this.spinner.hide());
+      () => {
+        this.favoriteService.getFavoriteRecipes().subscribe(res => res.forEach(recipe => {
+          if (recipe.recipe_id === this.id) this.recipe.id = recipe.id;
+        }));
+        this.spinner.hide();
+      });
   }
 
   onGoBack(): void {
@@ -89,9 +98,27 @@ export class RecipeDetailComponent implements OnInit {
       });
   }
 
-  onSave(recipe: Recipe) {
+  onSave(): void {
+    const title = this.recipe.title.length > 20 ? `${this.recipe.title.slice(0, 20)}...` : this.recipe.title;
+
+    this.spinner.show();
+    this.favoriteService.saveFavorite(this.recipe)
+      .then(res => {
+        this.snack.success(`The "${title}" Recipe was saved to favorites`);
+        this.recipe.id = res.id;
+      }).catch(err => this.snack.error(`Oops... ${err}`));
+    this.spinner.hide();
   }
 
-  onRemove(id: string) {
+  onRemove() {
+    const title = this.recipe.title.length > 20 ? `${this.recipe.title.slice(0, 20)}...` : this.recipe.title.slice();
+
+    this.spinner.show();
+    this.favoriteService.removeFavorite(this.recipe.id)
+      .then(() => {
+        this.snack.success(`The "${title}" Recipe was removed from favorites`);
+        delete this.recipe.id;
+      }).catch(err => this.snack.error(`Oops... ${err}`));
+    this.spinner.hide();
   }
 }

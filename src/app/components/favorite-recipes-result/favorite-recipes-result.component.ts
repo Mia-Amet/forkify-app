@@ -4,7 +4,7 @@ import { FavoriteService } from "../../services/favorite.service";
 import { SnackService } from "../../services/snack.service";
 import { RecipeService } from "../../services/recipe.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { Router, ActivatedRoute, Event } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-favorite-recipes-result',
@@ -30,6 +30,7 @@ export class FavoriteRecipesResultComponent implements OnChanges {
   ) { }
 
   ngOnChanges() {
+    this.pagesArr = [];
     this.pages = Math.ceil(this.favoriteRecipes.length / this.recipePerPage);
     for (let i = 0; i < this.pages; i++) {
       this.pagesArr[i] = i + 1;
@@ -61,17 +62,13 @@ export class FavoriteRecipesResultComponent implements OnChanges {
     this.spinner.show();
     this.favoriteService.removeFavorite(id)
       .then(() => {
-        let homeCollection = JSON.parse(localStorage.getItem('homeCollection'))
-          .map(item => {
-            if (item.id === id) delete item.id;
-            return item;
-          });
-        this.spinner.hide();
+        let homeCollection = JSON.parse(localStorage.getItem('homeCollection')).map(item => {
+          if (item.id === id) delete item.id;
+          return item;
+        });
         this.snack.success(`The "${titleFormat}" Recipe was removed from favorites`);
         localStorage.setItem('homeCollection', JSON.stringify(homeCollection));
-      }).catch(err => {
-        this.spinner.hide();
-        this.snack.error(`Oops... ${err}`);
-      });
+      }).catch(err => this.snack.error(`Oops... ${err}`));
+    this.spinner.hide();
   }
 }
