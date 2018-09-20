@@ -45,7 +45,6 @@ import { FavoriteRecipesResultComponent } from './components/favorite-recipes-re
 import { SnackComponent } from './components/snack/snack.component';
 import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 // Directives
-import { OpacityDirective } from "./directives/opacity.directive";
 import { SettingsComponent } from './components/settings/settings.component';
 import { LinkBtnDirective } from './directives/link-btn.directive';
 import { LayoutBtnDirective } from './directives/layout-btn.directive';
@@ -63,7 +62,6 @@ import { AuthService } from "./services/auth.service";
     HomeComponent,
     SignupComponent,
     ResetPasswordComponent,
-    OpacityDirective,
     NavbarComponent,
     SearchComponent,
     SearchResultComponent,

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
-import { map } from "rxjs/operators";
 import { BehaviorSubject, Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 import { Recipe } from "../models/Recipe";
 
 @Injectable({
@@ -26,10 +25,4 @@ export class RecipeService {
   getRecipe(id: string): Observable<Object> {
     return this.http.get(`${this.proxy}${this.apiUrl}/get?key=${this.apiKey}&rId=${id}`);
   }
-
-//  1. вывести рецепт
-//  2. пролучить его индекс в массиве и массив
-//  3. проверить актуальность кнопок назад / вперед
-//  4. получить соседей
-//  5. задать маршруты кнопкам
 }

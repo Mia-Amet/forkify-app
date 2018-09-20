@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
 import { AngularFireAuth } from "angularfire2/auth";
+import { Observable } from "rxjs";
 import { User } from "firebase";
 import UserCredential = firebase.auth.UserCredential;
 

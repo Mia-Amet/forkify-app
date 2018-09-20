@@ -50,6 +50,6 @@ export class LoginComponent implements OnInit {
       }).catch(err => {
         this.snack.error(`${err.message}`);
         this.loginForm.reset();
-    });
+      });
   }
 }

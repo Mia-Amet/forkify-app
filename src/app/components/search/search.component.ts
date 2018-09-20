@@ -2,12 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchService } from "../../services/search.service";
 import { FormControl, FormGroup } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
-import { Observable } from "rxjs";
-import { map, startWith } from "rxjs/operators";
-import { Recipe } from "../../models/Recipe";
 import { FavoriteService } from "../../services/favorite.service";
 import { SnackService } from "../../services/snack.service";
 import { SaveHistoryService } from "../../services/save-history.service";
+import { Observable } from "rxjs";
+import { Recipe } from "../../models/Recipe";
+import { map, startWith } from "rxjs/operators";
 
 @Component({
   selector: 'app-search',

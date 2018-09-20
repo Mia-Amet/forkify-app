@@ -31,11 +31,11 @@ export class ResetPasswordComponent implements OnInit {
     const email = this.restoreForm.value.email;
     this.auth.resetPassword(email)
       .then(res => {
-      this.snack.success(`We just sent an email to ${email}!`);
-      this.router.navigate(['/login']);
-    }).catch(err => {
-      this.snack.error(`No user with this email address has been found`);
-      this.restoreForm.reset();
-    });
+        this.snack.success(`We just sent an email to ${email}!`);
+        this.router.navigate(['/login']);
+      }).catch(err => {
+        this.snack.error(`No user with this email address has been found`);
+        this.restoreForm.reset();
+      });
   }
 }

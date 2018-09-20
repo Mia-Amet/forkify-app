@@ -1,10 +1,10 @@
 import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { Recipe } from "../../models/Recipe";
 import { FavoriteService } from "../../services/favorite.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { SnackService } from "../../services/snack.service";
 import { ActivatedRoute } from "@angular/router";
 import { RecipeService } from "../../services/recipe.service";
+import { Recipe } from "../../models/Recipe";
 
 @Component({
   selector: 'app-search-result',

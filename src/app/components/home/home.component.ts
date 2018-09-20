@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from "../../models/Recipe";
 import { SearchService } from "../../services/search.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { FavoriteService } from "../../services/favorite.service";
 import { SnackService } from "../../services/snack.service";
 import { AuthService } from "../../services/auth.service";
 import { UserService } from "../../services/user.service";
+import { Recipe } from "../../models/Recipe";
 import { User } from "firebase";
 
 @Component({

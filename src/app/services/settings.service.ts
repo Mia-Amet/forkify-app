@@ -20,10 +20,8 @@ export class SettingsService {
 
   openSettings(): MatDialogRef<SettingsComponent> {
     this.emitSettingsState(true);
-
     const settingsRef = this.dialog.open(SettingsComponent, {});
     settingsRef.afterClosed().subscribe(res => this.emitSettingsState(false));
-
     return settingsRef;
   }
 }

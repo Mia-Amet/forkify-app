@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MyValidators } from "../../services/my-validators.service";
 import { SnackService } from "../../services/snack.service";
-import {AngularFirestoreCollection} from "angularfire2/firestore";
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +22,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.auth.user.subscribe(user => {
-      if (user !== null) this.router.navigate(['/']);
+      if (user) this.router.navigate(['/']);
     });
 
     this.signupForm = new FormGroup({
@@ -45,7 +44,7 @@ export class SignupComponent implements OnInit {
 
     this.auth.signup(this.signupForm.value.email, this.signupForm.value.password)
       .then(res => {
-        if (res !== null) {
+        if (res) {
           localStorage.setItem('uid', res.user.uid);
           this.snack.success(`Nice to meet you, ${this.signupForm.value.email.split('@')[0]}`);
           this.router.navigate(['/']);

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { Recipe } from "../models/Recipe";
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from "angularfire2/firestore";
 import { AuthService } from "./auth.service";
 import { UserService } from "./user.service";
+import { Observable } from "rxjs";
+import { Recipe } from "../models/Recipe";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'

@@ -16,7 +16,7 @@ export class SnackService {
     private matSnack: MatSnackBar
   ) { }
 
-  success(message: string) {
+  success(message: string): void {
     const data: SnackData = { type: 'success', message };
     const config: MatSnackBarConfig = {
       panelClass: 'snack-bar-success',
@@ -25,7 +25,7 @@ export class SnackService {
     this.matSnack.openFromComponent(SnackComponent, config);
   }
 
-  error(message: string) {
+  error(message: string): void {
     const data: SnackData = { type: 'error', message };
     const config: MatSnackBarConfig = {
       panelClass: 'snack-bar-error',

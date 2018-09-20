@@ -3,9 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { AuthService } from "../services/auth.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Observable } from "rxjs";
-import {first, map} from "rxjs/operators";
-import { async } from "@angular/core/testing";
-import { User } from "firebase";
+import { first, map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
