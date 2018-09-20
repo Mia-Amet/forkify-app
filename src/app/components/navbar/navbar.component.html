@@ -5,10 +5,12 @@
     </a>
     <!-- /.logo -->
     <nav class="nav">
-      <a class="link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a class="link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+         [class.active]="isLinkActive('/')">
         {{ 'navbar.homeLink' | translate }}
       </a>
-      <a class="link" routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a class="link" routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+         [class.active]="isLinkActive('/favorites')">
         {{ 'navbar.favoritesLink' | translate }}
       </a>
       <a class="link" routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">

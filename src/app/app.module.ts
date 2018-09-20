@@ -24,6 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from "@angular/material";
 import { MatDialogModule } from "@angular/material";
 import { MatMenuModule } from "@angular/material";
+import { MatTabsModule } from "@angular/material";
 // Environment
 import { environment } from "../environments/environment";
 // My modules
@@ -42,6 +43,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 import { FavoriteRecipesResultComponent } from './components/favorite-recipes-result/favorite-recipes-result.component';
 import { SnackComponent } from './components/snack/snack.component';
+import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 // Directives
 import { OpacityDirective } from "./directives/opacity.directive";
 import { SettingsComponent } from './components/settings/settings.component';
@@ -52,7 +54,7 @@ import { ColorDirective } from './directives/color.directive';
 import { HttpLoaderFactory } from "./helpers/translateFactory";
 import { SwitchLanguageService } from "./services/switch-language.service";
 import { AuthGuard } from "./guards/auth.guard";
-import {AuthService} from "./services/auth.service";
+import { AuthService } from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import {AuthService} from "./services/auth.service";
     SnackComponent,
     LinkBtnDirective,
     LayoutBtnDirective,
-    ColorDirective
+    ColorDirective,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +103,7 @@ import {AuthService} from "./services/auth.service";
     MatListModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatTabsModule,
     MatMenuModule,
     TranslateModule.forRoot({
       loader: {

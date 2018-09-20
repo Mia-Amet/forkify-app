@@ -10,3 +10,17 @@ export interface Recipe {
   id?: string;
 }
 
+export interface RecipeExt extends Recipe {
+  ingredients: string[];
+}
+
+export interface RecipeDetail {
+  recipe: RecipeExt
+}
+
+export interface RequestRecipe {
+  recipe_id: string;
+  next_id: string | null;
+  prev_id: string | null;
+}
+

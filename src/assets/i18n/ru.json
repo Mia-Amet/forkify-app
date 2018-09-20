@@ -30,7 +30,7 @@
     "confirm": "Подтвердить пароль"
   },
   "search": {
-    "submitBtn": "Сохранить",
+    "submitBtn": "Искать",
     "inputPlaceholder": "по названию или ингридиентам"
   },
   "home": {

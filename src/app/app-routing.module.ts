@@ -7,7 +7,7 @@ import { FavoriteRecipesComponent } from "./components/favorite-recipes/favorite
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
-import { SettingsComponent } from "./components/settings/settings.component";
+import { RecipeDetailComponent } from "./components/recipe-detail/recipe-detail.component";
 import { AuthGuard } from "./guards/auth.guard";
 
 export const routes: Routes = [
@@ -17,6 +17,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'favorites', component: FavoriteRecipesComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'recipes/:id', component: RecipeDetailComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

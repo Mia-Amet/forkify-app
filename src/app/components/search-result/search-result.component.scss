@@ -63,14 +63,7 @@ a {
     animation: heartBeat .3s ease-in-out;
   }
 }
-//.f-btn-link {
-//  width: 290px !important;
-//  background: rgba(19, 24, 29, 0.65) !important;
-//  transition: background-color .3s ease-in-out;
-//  &:hover {
-//    background-color: $forkify-background !important;
-//  }
-//}
+
 .f-btn-prev, .f-btn-next, .f-btn-number {
   position: relative;
   background: transparent !important;
@@ -80,6 +73,13 @@ a {
   line-height: 30px !important;
   &:hover {
     color: lighten($forkify-on-surface, 10%) !important;
+  }
+  svg {
+    position: relative;
+    top: -1px;
+  }
+  #rotate {
+    transform: rotate(180deg);
   }
 }
 .mat-button.f-btn-number {
@@ -93,12 +93,4 @@ a {
   }
 }
 
-svg {
-  position: relative;
-  top: -1px;
-}
-
-#rotate {
-  transform: rotate(180deg);
-}
 

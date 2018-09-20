@@ -3,6 +3,8 @@ import { Recipe } from "../../models/Recipe";
 import { FavoriteService } from "../../services/favorite.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { SnackService } from "../../services/snack.service";
+import { ActivatedRoute } from "@angular/router";
+import { RecipeService } from "../../services/recipe.service";
 
 @Component({
   selector: 'app-search-result',
@@ -22,7 +24,9 @@ export class SearchResultComponent implements OnChanges {
   constructor(
     private favoriteService: FavoriteService,
     public spinner: NgxSpinnerService,
-    private snack: SnackService
+    private snack: SnackService,
+    private route: ActivatedRoute,
+    private recipeService: RecipeService
   ) { }
 
   ngOnChanges() {
@@ -30,11 +34,21 @@ export class SearchResultComponent implements OnChanges {
     for (let i = 0; i < this.pages; i++) {
       this.pagesArr[i] = i + 1;
     }
-    this.showPage();
+    this.route.queryParams.subscribe(res => {
+      if (res && res.p) {
+        this.currentPage = +res.p;
+      } else {
+        this.currentPage = 1;
+      }
+      this.showPage(this.currentPage);
+    });
   }
 
-  showPage(pageNumber: number = 1) {
-    this.currentPage = pageNumber;
+  onDetails() {
+    if (this.searchResult) this.recipeService.emitList(this.searchResult);
+  }
+
+  showPage(pageNumber: number = this.currentPage) {
     const start = (pageNumber - 1) * this.recipePerPage;
     const end = pageNumber * this.recipePerPage;
     this.recipesShowcase = this.searchResult.slice(start, end);

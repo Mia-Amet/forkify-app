@@ -1,0 +1,109 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+mat-card, mat-tab-group {
+  background: transparent none !important;
+  box-shadow: none !important; }
+
+.heading {
+  background: rgba(19, 24, 29, 0.4) !important;
+  position: relative;
+  padding: 30px; }
+
+mat-list-item, mat-list-option {
+  font-size: 13px !important; }
+
+h1 {
+  color: #4c5863;
+  font: 900 1.5em/1 'Montserrat' !important; }
+  h1 small {
+    font: 900 0.5em/1 'Montserrat' !important;
+    letter-spacing: 0.05em; }
+
+.subtitle {
+  color: inherit !important;
+  transition: color .2s ease-in-out; }
+  .subtitle:hover {
+    color: #60e7c5 !important; }
+
+.description {
+  color: #9ca9b4;
+  font: italic 400 15px/2 'Montserrat', 'Raleway', sans-serif !important;
+  letter-spacing: .03em !important; }
+
+.img-container {
+  overflow: hidden;
+  height: fit-content;
+  max-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.my-container-fluid {
+  background: rgba(23, 29, 35, 0.4); }
+
+.listing-btn-container {
+  background: rgba(19, 24, 29, 0.55);
+  width: 20%; }
+
+.listing-btn #prev, .listing-btn #next {
+  opacity: .65;
+  transition: opacity .3s ease-in-out; }
+.listing-btn:hover svg {
+  opacity: 1 !important; }
+
+.listing-btn[disabled][disabled] {
+  opacity: .45 !important;
+  pointer-events: none !important; }
+
+.back-btn {
+  width: 80% !important;
+  justify-content: left !important;
+  padding-left: 4% !important; }
+
+#back, #prev {
+  transform: rotate(180deg); }
+
+.f-btn-fav, .f-btn-pag, .f-btn-back {
+  position: absolute;
+  z-index: 99; }
+  .f-btn-fav:hover, .f-btn-pag:hover, .f-btn-back:hover {
+    cursor: pointer !important; }
+
+.f-btn-fav {
+  background: #ec5358 !important;
+  right: -28px;
+  bottom: -28px; }
+  .f-btn-fav:hover svg {
+    transform: scale(1.08);
+    animation: heartBeat .3s ease-in-out; }
+
+.f-btn-pag {
+  background: #313e4b !important;
+  bottom: -20px;
+  right: 120px; }
+  .f-btn-pag:last-of-type {
+    right: 60px; }
+  .f-btn-pag svg {
+    opacity: .65;
+    transition: opacity .2s ease-in-out; }
+  .f-btn-pag:hover svg {
+    opacity: 1; }
+  .f-btn-pag #next {
+    transform: rotate(180deg); }
+
+/*# sourceMappingURL=recipe-detail.component.css.map */

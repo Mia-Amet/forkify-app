@@ -1,0 +1,108 @@
+@import '../../../forkify-theme';
+
+mat-card, mat-tab-group {
+  background: transparent none !important;
+  box-shadow: none !important;
+}
+.heading {
+  background: rgba(19, 24, 29, 0.4) !important;
+  position: relative;
+  padding: 30px;
+}
+
+mat-list-item, mat-list-option {
+  font-size: 13px !important;
+}
+
+h1 {
+  color: #4c5863;
+  font: 900 1.5em/1 'Montserrat' !important;
+  small {
+    font: 900 0.5em/1 'Montserrat' !important;
+    letter-spacing: 0.05em;
+  }
+}
+.subtitle {
+  color: inherit !important;
+  transition: color .2s ease-in-out;
+  &:hover {
+    color: $forkify-primary-light !important;
+  }
+}
+.description {
+  color: $forkify-on-surface;
+  font: italic 400 15px/2 'Montserrat', 'Raleway', sans-serif !important;
+  letter-spacing: .03em !important;
+}
+
+.img-container {
+  overflow: hidden;
+  height: fit-content;
+  max-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-container-fluid {
+  background: rgba(23, 29, 35, 0.4);
+}
+.listing-btn-container {
+  background: rgba(19, 24, 29, 0.55);
+  width: 20%;
+}
+.listing-btn {
+  #prev, #next {
+    opacity: .65;
+    transition: opacity .3s ease-in-out;
+  }
+  &:hover svg {
+    opacity: 1 !important;
+  }
+}
+.listing-btn[disabled][disabled] {
+  opacity: .45 !important;
+  pointer-events: none !important;
+}
+.back-btn {
+  width: 80% !important;
+  justify-content: left !important;
+  padding-left: 4% !important;
+}
+#back, #prev {
+  transform: rotate(180deg);
+}
+
+.f-btn-fav, .f-btn-pag, .f-btn-back {
+  position: absolute;
+  z-index: 99;
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+.f-btn-fav {
+  background: $forkify-secondary-light !important;
+  right: -28px;
+  bottom: -28px;
+  &:hover svg {
+    transform: scale(1.08);
+    animation: heartBeat .3s ease-in-out;
+  }
+}
+.f-btn-pag {
+  background: lighten($forkify-background, 15%) !important;
+  bottom: -20px;
+  right: 120px;
+  &:last-of-type {
+    right: 60px;
+  }
+  svg {
+    opacity: .65;
+    transition: opacity .2s ease-in-out;
+  }
+  &:hover svg {
+    opacity: 1;
+  }
+  #next {
+    transform: rotate(180deg);
+  }
+}

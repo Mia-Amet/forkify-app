@@ -3,6 +3,7 @@ import { AuthService } from "../../services/auth.service";
 import { SnackService } from "../../services/snack.service";
 import { SettingsService } from "../../services/settings.service";
 import { MatDialogRef } from "@angular/material";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private snack: SnackService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,9 +31,7 @@ export class NavbarComponent implements OnInit {
     this.auth.logout().then(res => {
       localStorage.clear();
       this.logout.emit();
-    }).catch(err => {
-      this.snack.error(`Oops... ${err}`);
-    });
+    }).catch(err => console.log(err));
   }
 
   onClick() {
@@ -40,5 +40,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.settingsRef.close();
     }
+  }
+
+  public isLinkActive(url: string): boolean {
+    const reg = url === '/' ? /\/\?/ : /\/favorites\?/;
+    return reg.test(this.router.url);
   }
 }

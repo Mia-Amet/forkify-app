@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-4 mb-3" *ngFor="let item of recipesShowcase">
+  <div class="col-4 mb-3" *ngFor="let item of recipesShowcase; let idx = index">
     <mat-card class="mb-2 mt-2 pt-0">
       <mat-card-footer>
         <mat-card-title>{{ item.title }}
@@ -31,7 +31,9 @@
             </svg>
           </a>
           <!-- /.f-btn.f-btn-fav -->
-          <button [layout-btn]="'primary'" [bgColor]="'dark'" [hover]="'darker'" [width]="290" [weight]="500" class="m-0">
+          <button [layout-btn]="'primary'" [bgColor]="'dark'" [hover]="'darker'" [width]="290" [weight]="500"
+            class="m-0" routerLink="/recipes/{{ item.recipe_id }}" (click)="onDetails()"
+            [queryParams]="currentPage > 1 ? { i: idx + ((currentPage - 1) * recipePerPage) } : {i : idx}">
             {{ 'Full recipe' | uppercase }}
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 199.405 199.405" width="10px" height="10px">
               <polygon points="99.703,199.405 199.405,99.702 99.703,0 71.418,28.285 124.662,81.529 0,81.529 0,117.876 124.662,117.876 71.418,171.12"/>
@@ -48,8 +50,8 @@
 
 <div class="row">
   <div class="pagination d-flex justify-content-center align-items-center w-100">
-    <a mat-button class="f-btn f-btn-small f-on-surface m-3 f-btn-prev" [disabled]="currentPage === 1"
-       (click)="showPage(currentPage - 1)">
+    <a mat-button class="f-btn f-btn-small f-on-surface m-3 f-btn-prev" [disabled]="currentPage === 1" routerLink="/"
+      [queryParams]="currentPage > 1 ? { p: currentPage - 1 } : { p: currentPage }">
       <svg class="mr-2" id="rotate" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 199.405 199.405" width="10px" height="10px">
         <polygon points="99.703,199.405 199.405,99.702 99.703,0 71.418,28.285 124.662,81.529 0,81.529 0,117.876 124.662,117.876 71.418,171.12 " fill="#9CA9B4"/>
       </svg>
@@ -57,15 +59,15 @@
     <!-- /.f-btn.f-btn-link.f-btn-small.f-on-surface -->
     <div class="pages d-flex d-flex justify-content-center align-items-center">
       <button *ngFor="let page of pagesArr" mat-button class="f-btn f-btn-small f-on-surface m-1 p-0 f-btn-number"
-        (click)="showPage(page)" [disabled]="currentPage === page">
+        [disabled]="currentPage === page" routerLink="/" [queryParams]="{ p: page }">
         {{ page }}
       </button>
       <!-- /.f-btn.f-btn-link.f-btn-small.f-on-surface -->
     </div>
     <!-- /.pages -->
-    <a mat-button class="f-btn f-btn-small f-on-surface m-3 f-btn-next" *ngIf="pages > 1" [disabled]="currentPage === pages"
-       (click)="showPage(currentPage + 1)">
-       Next
+    <a mat-button class="f-btn f-btn-small f-on-surface m-3 f-btn-next" [disabled]="currentPage === pages" routerLink="/"
+      [queryParams]="currentPage < pages ? { p: currentPage + 1 } : { p: currentPage }">
+      Next
       <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 199.405 199.405" width="10px" height="10px">
         <polygon points="99.703,199.405 199.405,99.702 99.703,0 71.418,28.285 124.662,81.529 0,81.529 0,117.876 124.662,117.876 71.418,171.12 " fill="#9CA9B4"/>
       </svg>

@@ -30,7 +30,7 @@
     "confirm": "Confirm Password"
   },
   "search": {
-    "saveBtn": "Save",
+    "submitBtn": "Search",
     "inputPlaceholder": "by dish name or ingredients"
   },
   "home": {

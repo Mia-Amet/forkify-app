@@ -78,4 +78,28 @@ a {
   .f-btn-link:hover {
     background-color: #13181d !important; }
 
+.f-btn-prev, .f-btn-next, .f-btn-number {
+  position: relative;
+  background: transparent !important;
+  color: #9ca9b4 !important;
+  width: fit-content !important;
+  height: fit-content !important;
+  line-height: 30px !important; }
+  .f-btn-prev:hover, .f-btn-next:hover, .f-btn-number:hover {
+    color: #b9c2ca !important; }
+  .f-btn-prev svg, .f-btn-next svg, .f-btn-number svg {
+    position: relative;
+    top: -1px; }
+  .f-btn-prev #rotate, .f-btn-next #rotate, .f-btn-number #rotate {
+    transform: rotate(180deg); }
+
+.mat-button.f-btn-number {
+  max-width: 30px !important;
+  min-width: 30px !important; }
+
+.mat-button[disabled][disabled] {
+  opacity: .5 !important; }
+  .mat-button[disabled][disabled]:hover {
+    color: #9ca9b4 !important; }
+
 /*# sourceMappingURL=favorite-recipes-result.component.css.map */

@@ -80,6 +80,11 @@ a {
   line-height: 30px !important; }
   .f-btn-prev:hover, .f-btn-next:hover, .f-btn-number:hover {
     color: #b9c2ca !important; }
+  .f-btn-prev svg, .f-btn-next svg, .f-btn-number svg {
+    position: relative;
+    top: -1px; }
+  .f-btn-prev #rotate, .f-btn-next #rotate, .f-btn-number #rotate {
+    transform: rotate(180deg); }
 
 .mat-button.f-btn-number {
   max-width: 30px !important;
@@ -89,12 +94,5 @@ a {
   opacity: .5 !important; }
   .mat-button[disabled][disabled]:hover {
     color: #9ca9b4 !important; }
-
-svg {
-  position: relative;
-  top: -1px; }
-
-#rotate {
-  transform: rotate(180deg); }
 
 /*# sourceMappingURL=search-result.component.css.map */
