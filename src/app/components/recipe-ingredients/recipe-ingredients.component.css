@@ -1,0 +1,37 @@
+@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);
+@keyframes heartBeat {
+  0% {
+    transform: scale(1); }
+  25% {
+    transform: scale(1.05); }
+  50% {
+    transform: scale(1); }
+  75% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+mat-card, mat-tab-group {
+  background: transparent none !important;
+  box-shadow: none !important; }
+
+mat-list-item, mat-list-option {
+  font-size: 13px !important; }
+
+mat-checkbox.mat-checkbox {
+  border-radius: 2px !important;
+  opacity: 0.75 !important;
+  transition: opacity .3s ease-in-out; }
+  mat-checkbox.mat-checkbox:hover {
+    opacity: 1 !important; }
+
+.mat-raised-button[disabled][disabled] {
+  opacity: .35 !important;
+  color: white !important;
+  pointer-events: none !important; }
+
+/*# sourceMappingURL=recipe-ingredients.component.css.map */

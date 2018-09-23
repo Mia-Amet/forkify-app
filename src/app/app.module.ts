@@ -25,6 +25,7 @@ import { MatSnackBarModule } from "@angular/material";
 import { MatDialogModule } from "@angular/material";
 import { MatMenuModule } from "@angular/material";
 import { MatTabsModule } from "@angular/material";
+import { MatCheckboxModule } from "@angular/material";
 // Environment
 import { environment } from "../environments/environment";
 // My modules
@@ -44,6 +45,11 @@ import { AboutComponent } from './components/about/about.component';
 import { FavoriteRecipesResultComponent } from './components/favorite-recipes-result/favorite-recipes-result.component';
 import { SnackComponent } from './components/snack/snack.component';
 import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { RecipeIngredientsComponent } from './components/recipe-ingredients/recipe-ingredients.component';
+import { RecipeTextComponent } from './components/recipe-text/recipe-text.component';
+import { RecipeCommentsComponent } from './components/recipe-comments/recipe-comments.component';
 // Directives
 import { SettingsComponent } from './components/settings/settings.component';
 import { LinkBtnDirective } from './directives/link-btn.directive';
@@ -74,7 +80,12 @@ import { AuthService } from "./services/auth.service";
     LinkBtnDirective,
     LayoutBtnDirective,
     ColorDirective,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    ShoppingListComponent,
+    DialogComponent,
+    RecipeIngredientsComponent,
+    RecipeTextComponent,
+    RecipeCommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +114,7 @@ import { AuthService } from "./services/auth.service";
     MatDialogModule,
     MatTabsModule,
     MatMenuModule,
+    MatCheckboxModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -135,7 +147,7 @@ import { AuthService } from "./services/auth.service";
     AuthService,
     AuthGuard
   ],
-  entryComponents: [SnackComponent, SettingsComponent],
+  entryComponents: [SnackComponent, SettingsComponent, DialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

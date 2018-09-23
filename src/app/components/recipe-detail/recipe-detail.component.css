@@ -40,11 +40,6 @@ h1 {
   .subtitle:hover {
     color: #60e7c5 !important; }
 
-.description {
-  color: #9ca9b4;
-  font: italic 400 15px/2 'Montserrat', 'Raleway', sans-serif !important;
-  letter-spacing: .03em !important; }
-
 .img-container {
   overflow: hidden;
   height: fit-content;

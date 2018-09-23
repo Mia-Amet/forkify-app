@@ -1,5 +1,6 @@
 @import "forkify-theme.scss";
 
+// ---------------------- Layout ----------------------
 * {
   font-family: 'Raleway', 'Montserrat', sans-serif !important;
   letter-spacing: 0.05em;
@@ -17,6 +18,17 @@ body {
   width: 48%;
 }
 
+.dash {
+  position: absolute;
+  bottom: 0;
+  right: -540px;
+  height: 4px;
+  width: 340px;
+  background: linear-gradient(45deg, $forkify-primary-light, $forkify-primary);
+  transition: right .2s ease-in;
+}
+
+// ---------------------- Buttons & Links ----------------------
 a.link {
   color: $forkify-secondary-light !important;
   margin: 0 20px;
@@ -37,15 +49,6 @@ a.link {
   font-size: 12px !important;
 }
 
-.dash {
-  position: absolute;
-  bottom: 0;
-  right: -540px;
-  height: 4px;
-  width: 340px;
-  background: linear-gradient(45deg, $forkify-primary-light, $forkify-primary);
-  transition: right .2s ease-in;
-}
 .settings-btn {
   color: $forkify-primary-light !important;
   transition: border .2s ease-in-out;
@@ -69,6 +72,7 @@ a.link {
   }
 }
 
+// ---------------------- Forms & Inputs ----------------------
 .mat-input-element {
   caret-color: $forkify-secondary-light !important;
 }
@@ -80,6 +84,39 @@ a.link {
   background-color: $forkify-secondary-light !important;
 }
 
+.mat-pseudo-checkbox {
+  border-width: 1px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+.mat-primary .mat-pseudo-checkbox-checked {
+  background: $forkify-secondary-light !important;
+}
+
+label.mat-checkbox-layout {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center;
+  font-size: 10px !important;
+  text-transform: uppercase;
+  padding: 4px 16px !important;
+  margin: 0 !important;
+  .mat-checkbox-inner-container {
+    width: 17px !important;
+    height: 17px !important;
+    margin: 0 0 0 10px !important;
+  }
+  .mat-checkbox-label {
+    position: relative;
+    top: 1px;
+  }
+}
+.mat-checkbox-frame {
+  border: 1px solid rgba(19, 24, 29, 0.35) !important;
+  background-color: #252F39 !important;
+}
+
+// ---------------------- Lists ----------------------
 mat-list-item mat-slide-toggle.mat-slide-toggle .mat-slide-toggle-label {
   display: flex !important;
   flex-direction: row-reverse !important;
@@ -112,23 +149,7 @@ mat-list-item mat-slide-toggle.mat-slide-toggle.mat-checked .mat-slide-toggle-la
   height: fit-content !important;
 }
 
-.snack-bar-error, .snack-bar-success {
-  position: relative;
-  overflow: hidden;
-  background: $forkify-on-background;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
-  border-radius: 0 !important;
-  height: 56px;
-  padding: 20px !important;
-  max-width: 800px !important;
-}
-
-#userSettings {
-  background: #f5fffa;
-  border-radius: 0 !important;
-  z-index: 999 !important;
-}
-
+// ---------------------- Menu ----------------------
 .mat-menu-panel {
   position: relative;
   top: -4px;
@@ -142,6 +163,7 @@ mat-list-item mat-slide-toggle.mat-slide-toggle.mat-checked .mat-slide-toggle-la
   }
 }
 
+// ---------------------- Tabs ----------------------
 .mat-tab-labels {
   background: rgba(23, 29, 35, 0.65) !important;
   .mat-tab-label {
@@ -156,11 +178,44 @@ mat-tab-header {
   height: 4px !important;
 }
 
-.mat-pseudo-checkbox {
-  border-width: 1px !important;
-  width: 16px !important;
-  height: 16px !important;
+// ---------------------- Snackbar ----------------------
+.snack-bar-error, .snack-bar-success {
+  position: relative;
+  overflow: hidden;
+  background: $forkify-on-background;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 0 !important;
+  height: 56px;
+  padding: 20px !important;
+  max-width: 800px !important;
 }
-.mat-primary .mat-pseudo-checkbox-checked {
-  background: $forkify-secondary-light !important;
+
+// ---------------------- Dialog ----------------------
+#user-settings, #confirm-dialog {
+  background: #f5fffa;
+  border-radius: 0 !important;
+  z-index: 999 !important;
 }
+#user-settings {
+  .mat-list-item {
+    height: 48px !important;
+  }
+}
+#confirm-dialog {
+  color: $forkify-background !important;
+  text-align: center !important;
+  h4 {
+    font-size: 14px !important;
+  }
+  mat-dialog-content {
+    font-size: 13px !important;
+  }
+  .mat-dialog-actions {
+    justify-content: center;
+  }
+  button {
+    outline: none !important;
+  }
+}
+
+

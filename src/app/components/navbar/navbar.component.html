@@ -13,6 +13,9 @@
          [class.active]="isLinkActive('/favorites')">
         {{ 'navbar.favoritesLink' | translate }}
       </a>
+      <a class="link" routerLink="/shopping-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        {{ 'navbar.shoppingListLink' | translate }}
+      </a>
       <a class="link" routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         {{ 'navbar.aboutLink' | translate }}
       </a>

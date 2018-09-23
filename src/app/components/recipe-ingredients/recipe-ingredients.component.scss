@@ -1,0 +1,23 @@
+@import '../../../forkify-theme';
+
+mat-card, mat-tab-group {
+  background: transparent none !important;
+  box-shadow: none !important;
+}
+mat-list-item, mat-list-option {
+  font-size: 13px !important;
+}
+
+mat-checkbox.mat-checkbox {
+  border-radius: 2px !important;
+  opacity: 0.75 !important;
+  transition: opacity .3s ease-in-out;
+  &:hover {
+    opacity: 1 !important;
+  }
+}
+.mat-raised-button[disabled][disabled] {
+  opacity: .35 !important;
+  color: white !important;
+  pointer-events: none !important;
+}

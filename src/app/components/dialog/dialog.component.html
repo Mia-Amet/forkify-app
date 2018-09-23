@@ -1,0 +1,6 @@
+<h4 mat-dialog-title class="mb-1">"{{ data.title }}"</h4>
+<mat-dialog-content>{{ data.text }}</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [my-color]="'secondary'" [prop]="'color'" class="mr-0" [mat-dialog-close]="true">Yes, remove</button>
+  <button mat-button [my-color]="'#222b34'" [prop]="'color'" class="ml-0" mat-dialog-close>No, cancel</button>
+</mat-dialog-actions>

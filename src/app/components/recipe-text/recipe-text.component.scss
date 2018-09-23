@@ -1,0 +1,16 @@
+@import '../../../forkify-theme';
+
+mat-card {
+  background: transparent none !important;
+  box-shadow: none !important;
+}
+
+mat-list-item, mat-list-option {
+  font-size: 13px !important;
+}
+
+.description {
+  color: $forkify-on-surface;
+  font: italic 400 15px/2 'Montserrat', 'Raleway', sans-serif !important;
+  letter-spacing: .03em !important;
+}

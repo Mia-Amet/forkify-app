@@ -5,6 +5,7 @@ import { SnackService } from "../../services/snack.service";
 import { RecipeService } from "../../services/recipe.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router, ActivatedRoute } from "@angular/router";
+import { DialogService } from "../../services/dialog.service";
 
 @Component({
   selector: 'app-favorite-recipes-result',
@@ -26,7 +27,8 @@ export class FavoriteRecipesResultComponent implements OnChanges {
     public spinner: NgxSpinnerService,
     private router: Router,
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private dialog: DialogService
   ) { }
 
   ngOnChanges() {
@@ -58,17 +60,26 @@ export class FavoriteRecipesResultComponent implements OnChanges {
   onRemove(id: string) {
     const title = this.favoriteRecipes.filter(item => item.id === id)[0].title;
     const titleFormat = title.length > 20 ? `${title.slice(0, 20)}...` : title.slice();
+    const text = 'Are you sure you want to remove this recipe from favorites?';
 
-    this.spinner.show();
-    this.favoriteService.removeFavorite(id)
-      .then(() => {
-        let homeCollection = JSON.parse(localStorage.getItem('homeCollection')).map(item => {
-          if (item.id === id) delete item.id;
-          return item;
-        });
-        this.snack.success(`The "${titleFormat}" Recipe was removed from favorites`);
-        localStorage.setItem('homeCollection', JSON.stringify(homeCollection));
-      }).catch(err => this.snack.error(`Oops... ${err}`));
-    this.spinner.hide();
+    this.dialog.openDialog(id, titleFormat, text).subscribe((res: boolean) => {
+      if (res) {
+        this.spinner.show();
+        this.favoriteService.removeFavorite(id)
+          .then(() => {
+            let homeCollection = JSON.parse(localStorage.getItem('homeCollection')).map(item => {
+              if (item.id === id) delete item.id;
+              return item;
+            });
+            localStorage.setItem('homeCollection', JSON.stringify(homeCollection));
+          }).then(() => {
+            this.spinner.hide();
+            this.snack.success(`The "${titleFormat}" Recipe was removed from favorites`);
+          }).catch(err => {
+            this.spinner.hide();
+            this.snack.error(`Oops... ${err}`);
+          });
+      }
+    });
   }
 }

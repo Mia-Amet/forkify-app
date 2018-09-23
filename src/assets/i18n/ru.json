@@ -4,7 +4,8 @@
     "favoritesLink": "Избранное",
     "aboutLink": "Кто мы?",
     "settingsLink": "Мои настройки",
-    "logoutLink": "Выйти"
+    "logoutLink": "Выйти",
+    "shoppingListLink": "Список покупок"
   },
   "settings": {
     "switchLang": "Выбрать язык",

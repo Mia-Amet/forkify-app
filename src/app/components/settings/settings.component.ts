@@ -29,10 +29,6 @@ export class SettingsComponent implements OnInit {
     this.saveHistoryService.toggleStateExp(this.historyState);
   }
 
-  onCloseSettings() {
-    this.settingsRef.close();
-  }
-
   switchLanguage(lang: string) {
     this.switchLanguageService.switchLanguage(lang);
   }

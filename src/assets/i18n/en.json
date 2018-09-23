@@ -4,7 +4,8 @@
     "favoritesLink": "Favorites",
     "aboutLink": "About Us",
     "settingsLink": "My Settings",
-    "logoutLink": "Logout"
+    "logoutLink": "Logout",
+    "shoppingListLink": "Shopping list"
   },
   "settings": {
     "switchLang": "Select language",

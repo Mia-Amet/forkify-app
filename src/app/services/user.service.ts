@@ -23,4 +23,14 @@ export class UserService {
     }
     return this.usersCollection.doc(this.uid).collection('favorites');
   }
+
+  getUserShoppingList(): AngularFirestoreCollection {
+    if (!this.uid) {
+      this.auth.authState.subscribe(res => {
+        if (res) localStorage.setItem('uid', res.uid);
+      });
+      this.uid = JSON.parse(localStorage.getItem('uid'));
+    }
+    return this.usersCollection.doc(this.uid).collection('shopping_list');
+  }
 }

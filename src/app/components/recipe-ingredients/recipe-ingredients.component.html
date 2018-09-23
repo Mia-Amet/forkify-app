@@ -1,0 +1,20 @@
+<mat-card class="p-5 list">
+  <div class="w-100 d-flex justify-content-end" *ngIf="ingredients">
+    <mat-checkbox [my-color]="'#171D23'" [(ngModel)]="selectAll"
+                  (click)="selectAll ? ingredients.deselectAll() : ingredients.selectAll()">
+      Select all
+    </mat-checkbox>
+  </div>
+  <mat-selection-list #ingredients role="listbox">
+    <mat-list-option role="option" *ngFor="let item of ingredientsList | async" [value]="item">
+      {{ item }}
+    </mat-list-option>
+  </mat-selection-list>
+  <div class="w-100 d-flex justify-content-center mt-4">
+    <button mat-raised-button [my-color]="'primary-light'" class="mt-2" (click)="onAddIngredients()"
+            [disabled]="!ingredients.selectedOptions.selected.length">
+      Add To Shopping List
+    </button>
+  </div>
+</mat-card>
+<!-- /.list -->

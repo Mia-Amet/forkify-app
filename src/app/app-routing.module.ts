@@ -8,6 +8,7 @@ import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 import { RecipeDetailComponent } from "./components/recipe-detail/recipe-detail.component";
+import { ShoppingListComponent } from "./components/shopping-list/shopping-list.component";
 import { AuthGuard } from "./guards/auth.guard";
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'favorites', component: FavoriteRecipesComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'recipes/:id', component: RecipeDetailComponent, canActivate: [AuthGuard] },
+  { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

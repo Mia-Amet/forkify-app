@@ -4,6 +4,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { SnackService } from "../../services/snack.service";
 import { ActivatedRoute } from "@angular/router";
 import { RecipeService } from "../../services/recipe.service";
+import { DialogService } from "../../services/dialog.service";
 import { Recipe } from "../../models/Recipe";
 
 @Component({
@@ -26,7 +27,8 @@ export class SearchResultComponent implements OnChanges {
     public spinner: NgxSpinnerService,
     private snack: SnackService,
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private dialog: DialogService
   ) { }
 
   ngOnChanges() {
@@ -72,23 +74,30 @@ export class SearchResultComponent implements OnChanges {
   onRemove(id: string): void {
     const item = this.searchResult.filter(item => item.id === id)[0];
     const title = item.title.length > 20 ? `${item.title.slice(0, 20)}...` : item.title.slice();
+    const text = 'Are you sure you want to remove this recipe from favorites?';
 
-    this.spinner.show();
-    this.favoriteService.removeFavorite(id)
-      .then(() => {
-        this.snack.success(`The "${title}" Recipe was removed from favorites`);
-
-        this.updateData.emit({
-          f2f_url: item.f2f_url,
-          image_url: item.image_url,
-          publisher: item.publisher,
-          publisher_url: item.publisher_url,
-          recipe_id: item.recipe_id,
-          social_rank: item.social_rank,
-          source_url: item.source_url,
-          title: item.title
-        });
-      }).catch(err => this.snack.error(`Oops... ${err}`));
-    this.spinner.hide();
+    this.dialog.openDialog(id, title, text).subscribe((res: boolean) => {
+      if (res) {
+        this.spinner.show();
+        this.favoriteService.removeFavorite(id)
+          .then(() => {
+            this.spinner.hide();
+            this.snack.success(`The "${title}" Recipe was removed from favorites`);
+            this.updateData.emit({
+              f2f_url: item.f2f_url,
+              image_url: item.image_url,
+              publisher: item.publisher,
+              publisher_url: item.publisher_url,
+              recipe_id: item.recipe_id,
+              social_rank: item.social_rank,
+              source_url: item.source_url,
+              title: item.title
+            });
+          }).catch(err => {
+            this.spinner.hide();
+            this.snack.error(`Oops... ${err}`)
+          });
+      }
+    });
   }
 }

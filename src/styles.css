@@ -29,6 +29,15 @@ body {
 .half-width {
   width: 48%; }
 
+.dash {
+  position: absolute;
+  bottom: 0;
+  right: -540px;
+  height: 4px;
+  width: 340px;
+  background: linear-gradient(45deg, #60e7c5, #34cbbf);
+  transition: right .2s ease-in; }
+
 a.link {
   color: #ec5358 !important;
   margin: 0 20px;
@@ -45,15 +54,6 @@ a.link {
 
 .f-btn-small {
   font-size: 12px !important; }
-
-.dash {
-  position: absolute;
-  bottom: 0;
-  right: -540px;
-  height: 4px;
-  width: 340px;
-  background: linear-gradient(45deg, #60e7c5, #34cbbf);
-  transition: right .2s ease-in; }
 
 .settings-btn {
   color: #60e7c5 !important;
@@ -82,6 +82,34 @@ a.link {
 .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: #ec5358 !important; }
 
+.mat-pseudo-checkbox {
+  border-width: 1px !important;
+  width: 16px !important;
+  height: 16px !important; }
+
+.mat-primary .mat-pseudo-checkbox-checked {
+  background: #ec5358 !important; }
+
+label.mat-checkbox-layout {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center;
+  font-size: 10px !important;
+  text-transform: uppercase;
+  padding: 4px 16px !important;
+  margin: 0 !important; }
+  label.mat-checkbox-layout .mat-checkbox-inner-container {
+    width: 17px !important;
+    height: 17px !important;
+    margin: 0 0 0 10px !important; }
+  label.mat-checkbox-layout .mat-checkbox-label {
+    position: relative;
+    top: 1px; }
+
+.mat-checkbox-frame {
+  border: 1px solid rgba(19, 24, 29, 0.35) !important;
+  background-color: #252F39 !important; }
+
 mat-list-item mat-slide-toggle.mat-slide-toggle .mat-slide-toggle-label {
   display: flex !important;
   flex-direction: row-reverse !important;
@@ -107,21 +135,6 @@ mat-list-item mat-slide-toggle.mat-slide-toggle.mat-checked .mat-slide-toggle-la
 .mat-list .mat-list-item {
   height: fit-content !important; }
 
-.snack-bar-error, .snack-bar-success {
-  position: relative;
-  overflow: hidden;
-  background: #d9dcda;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
-  border-radius: 0 !important;
-  height: 56px;
-  padding: 20px !important;
-  max-width: 800px !important; }
-
-#userSettings {
-  background: #f5fffa;
-  border-radius: 0 !important;
-  z-index: 999 !important; }
-
 .mat-menu-panel {
   position: relative;
   top: -4px;
@@ -145,12 +158,34 @@ mat-tab-header {
   background-color: #ec5358 !important;
   height: 4px !important; }
 
-.mat-pseudo-checkbox {
-  border-width: 1px !important;
-  width: 16px !important;
-  height: 16px !important; }
+.snack-bar-error, .snack-bar-success {
+  position: relative;
+  overflow: hidden;
+  background: #d9dcda;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 0 !important;
+  height: 56px;
+  padding: 20px !important;
+  max-width: 800px !important; }
 
-.mat-primary .mat-pseudo-checkbox-checked {
-  background: #ec5358 !important; }
+#user-settings, #confirm-dialog {
+  background: #f5fffa;
+  border-radius: 0 !important;
+  z-index: 999 !important; }
+
+#user-settings .mat-list-item {
+  height: 48px !important; }
+
+#confirm-dialog {
+  color: #13181d !important;
+  text-align: center !important; }
+  #confirm-dialog h4 {
+    font-size: 14px !important; }
+  #confirm-dialog mat-dialog-content {
+    font-size: 13px !important; }
+  #confirm-dialog .mat-dialog-actions {
+    justify-content: center; }
+  #confirm-dialog button {
+    outline: none !important; }
 
 /*# sourceMappingURL=styles.css.map */

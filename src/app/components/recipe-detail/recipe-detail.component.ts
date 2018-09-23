@@ -4,9 +4,10 @@ import { FavoriteService } from "../../services/favorite.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
 import { SnackService } from "../../services/snack.service";
+import { DialogService } from "../../services/dialog.service";
 import { FakeRecipe } from "../../helpers/fakeRecipe"
 import { Location } from "@angular/common";
-import { RecipeDetail, RecipeExt, RequestRecipe } from "../../models/Recipe";
+import { RecipeExt, RequestRecipe } from "../../models/Recipe";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -20,7 +21,6 @@ export class RecipeDetailComponent implements OnInit {
   recipe: RecipeExt;
   ingredientsList: Observable<string[]>;
   description: Observable<string>;
-  cookProcess: string[];
   index: number;
   recipeInfo: RequestRecipe;
   private currentList: RequestRecipe[];
@@ -33,14 +33,14 @@ export class RecipeDetailComponent implements OnInit {
     private faker: FakeRecipe,
     private location: Location,
     private favoriteService: FavoriteService,
-    private snack: SnackService
+    private snack: SnackService,
+    private dialog: DialogService
   ) { }
 
   ngOnInit() {
     this.router.onSameUrlNavigation = 'reload';
     this.index = this.route.snapshot.queryParams['i'];
     this.id = this.route.snapshot.params['id'];
-    this.cookProcess = this.faker.cookProcess;
 
     this.getRecipeInfo()
       .then(res => this.recipeInfo = res)
@@ -48,7 +48,7 @@ export class RecipeDetailComponent implements OnInit {
     this.getRecipe(this.id);
   }
 
-  async getRecipeInfo() {
+  async getRecipeInfo(): Promise<RequestRecipe> {
     let recipe: RequestRecipe;
     await this.recipeService.listState.pipe(
       map(res => res.map((recipe: RecipeExt, index) => {
@@ -65,23 +65,23 @@ export class RecipeDetailComponent implements OnInit {
 
   getRecipe(id: string): void {
     this.spinner.show();
-    this.recipeService.getRecipe(id).subscribe((res: RecipeDetail) => {
+    this.recipeService.getRecipe(id).subscribe((res: RecipeExt) => {
       if (res) {
-        this.recipe = res.recipe;
-        this.ingredientsList = new Observable(observer => observer.next(res.recipe.ingredients));
-        this.description = new Observable(observer => observer.next(this.faker.getDescription(res.recipe.title)));
+        this.recipe = res;
+        this.ingredientsList = new Observable(observer => observer.next(res.ingredients));
+        this.description = new Observable(observer => observer.next(this.faker.getDescription(res.title)));
       }
-    }, err => console.log(err),
-      () => {
-        this.favoriteService.getFavoriteRecipes().subscribe(res => res.forEach(recipe => {
-          if (recipe.recipe_id === this.id) this.recipe.id = recipe.id;
-        }));
-        this.spinner.hide();
-      });
+    }, err => console.log(err), () => {
+      this.favoriteService.getFavoriteRecipes().subscribe(res => res.forEach(recipe => {
+        if (recipe.recipe_id === this.id) this.recipe.id = recipe.id;
+      }));
+      this.spinner.hide();
+    });
   }
 
   onGoBack(): void {
     this.location.back();
+    if (/\/recipes/.test(this.router.url)) this.ngOnInit();
   }
 
   onNext(id: string): void {
@@ -99,7 +99,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onSave(): void {
-    const title = this.recipe.title.length > 20 ? `${this.recipe.title.slice(0, 20)}...` : this.recipe.title;
+    const title: string = this.recipe.title.length > 20 ? `${this.recipe.title.slice(0, 20)}...` : this.recipe.title;
 
     this.spinner.show();
     this.favoriteService.saveFavorite(this.recipe)
@@ -111,14 +111,28 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onRemove() {
-    const title = this.recipe.title.length > 20 ? `${this.recipe.title.slice(0, 20)}...` : this.recipe.title.slice();
+    const title: string = this.recipe.title.length > 20 ? `${this.recipe.title.slice(0, 20)}...` : this.recipe.title.slice();
+    const text: string = 'Are you sure you want to remove this recipe from favorites?';
 
-    this.spinner.show();
-    this.favoriteService.removeFavorite(this.recipe.id)
-      .then(() => {
-        this.snack.success(`The "${title}" Recipe was removed from favorites`);
-        delete this.recipe.id;
-      }).catch(err => this.snack.error(`Oops... ${err}`));
-    this.spinner.hide();
+    this.dialog.openDialog(this.recipe.id, title, text).subscribe((res: boolean) => {
+      if (res) {
+        this.spinner.show();
+        this.favoriteService.removeFavorite(this.recipe.id)
+          .then(() => {
+            let homeCollection = JSON.parse(localStorage.getItem('homeCollection')).map(item => {
+              if (item.id === this.recipe.id) delete item.id;
+              return item;
+            });
+            localStorage.setItem('homeCollection', JSON.stringify(homeCollection));
+            delete this.recipe.id;
+          }).then(() => {
+            this.spinner.hide();
+            this.snack.success(`The "${title}" Recipe was removed from favorites`);
+          }).catch(err => {
+            this.spinner.hide();
+            this.snack.error(`Oops... ${err}`)
+          });
+      }
+    });
   }
 }
